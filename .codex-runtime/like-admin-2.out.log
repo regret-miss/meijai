@@ -1,0 +1,65 @@
+Spring Boot Version: 2.7.18
+///////////////////////////////////////////////////////
+//   _     _ _        _       _           _          //
+//  | |   (_) | __   / \   __| |_ __ ___ (_)_ __     //
+//  | |   | | |/ /  / _ \ / _` | '_ ` _ \| | '_ \    //
+//  | |___| |   <  / ___ \ (_| | | | | | | | | | |   //
+//  |_____|_|_|\_\/_/   \_\__,_|_| |_| |_|_|_| |_|   //
+//   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^    //
+//       佛祖保佑       永不宕机      永无BUG         //
+//////////////////////////////////////////////////////
+13:42:03.048 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+13:42:03.096 [main] INFO  com.mdd.admin.LikeAdminApplication - Starting LikeAdminApplication using Java 21.0.12 on angle with PID 33288 (G:\desktop\likeadmin_java-master\server\like-admin\target\like-admin-1.0.0.jar started by 15367 in G:\desktop\likeadmin_java-master)
+13:42:03.099 [main] INFO  com.mdd.admin.LikeAdminApplication - The following 2 profiles are active: "dev", "local"
+13:42:05.533 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8082 (http)
+13:42:05.550 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
+13:42:05.553 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+13:42:05.553 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.83]
+13:42:05.644 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+13:42:05.645 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2506 ms
+13:42:06.861 [main] INFO  org.quartz.impl.StdSchedulerFactory - Using default implementation for ThreadExecutor
+13:42:06.879 [main] INFO  org.quartz.core.SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+13:42:06.879 [main] INFO  org.quartz.core.QuartzScheduler - Quartz Scheduler v.2.3.2 created.
+13:42:06.880 [main] INFO  org.quartz.simpl.RAMJobStore - RAMJobStore initialized.
+13:42:06.881 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+13:42:06.881 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+13:42:06.882 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler version: 2.3.2
+13:42:06.882 [main] INFO  org.quartz.core.QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@f72203
+13:42:07.005 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Starting...
+13:42:07.191 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Start completed.
+13:42:09.747 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
+13:42:09.763 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8082 (http) with context path ''
+13:42:10.663 [main] INFO  org.springframework.scheduling.quartz.SchedulerFactoryBean - Starting Quartz Scheduler now
+13:42:10.664 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED started.
+13:42:10.672 [main] INFO  com.mdd.admin.LikeAdminApplication - Started LikeAdminApplication in 8.049 seconds (JVM running for 8.831)
+13:42:27.752 [http-nio-8082-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+13:42:27.753 [http-nio-8082-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+13:42:27.753 [http-nio-8082-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+13:42:27.970 [nail-ai-1] ERROR org.springframework.aop.interceptor.SimpleAsyncUncaughtExceptionHandler - Unexpected exception occurred invoking async method: public void com.mdd.admin.nail.service.NailAiWorker.generate(java.lang.Long)
+java.lang.NoSuchFieldError: Class okio.Options does not have member field 'okio.Options$Companion Companion'
+	at okhttp3.internal.Util.<clinit>(Util.kt:70) ~[okhttp-4.9.3.jar!/:?]
+	at okhttp3.internal.concurrent.TaskRunner.<clinit>(TaskRunner.kt:309) ~[okhttp-4.9.3.jar!/:?]
+	at okhttp3.ConnectionPool.<init>(ConnectionPool.kt:41) ~[okhttp-4.9.3.jar!/:?]
+	at okhttp3.ConnectionPool.<init>(ConnectionPool.kt:47) ~[okhttp-4.9.3.jar!/:?]
+	at okhttp3.OkHttpClient$Builder.<init>(OkHttpClient.kt:471) ~[okhttp-4.9.3.jar!/:?]
+	at com.volcengine.ark.runtime.service.ArkService$Builder.build(ArkService.java:590) ~[volcengine-java-sdk-ark-runtime-2.0.20.jar!/:?]
+	at com.mdd.admin.nail.provider.VolcengineNailImageProvider.service(VolcengineNailImageProvider.java:87) ~[classes!/:?]
+	at com.mdd.admin.nail.provider.VolcengineNailImageProvider.generate(VolcengineNailImageProvider.java:54) ~[classes!/:?]
+	at com.mdd.admin.nail.service.NailAiWorker.generate(NailAiWorker.java:50) ~[classes!/:?]
+	at com.mdd.admin.nail.service.NailAiWorker$$FastClassBySpringCGLIB$$e972980.invoke(<generated>) ~[classes!/:?]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.3.31.jar!/:5.3.31]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:792) ~[spring-aop-5.3.31.jar!/:5.3.31]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.3.31.jar!/:5.3.31]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:762) ~[spring-aop-5.3.31.jar!/:5.3.31]
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:115) ~[spring-aop-5.3.31.jar!/:5.3.31]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[?:?]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?]
+	at java.lang.Thread.run(Thread.java:1583) ~[?:?]

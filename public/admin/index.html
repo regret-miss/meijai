@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>后台管理系统</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .preload {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        width: 100vw;
+      }
+  
+      .circular {
+        height: 42px;
+        width: 42px;
+        -webkit-animation: loading-rotate 2s linear infinite;
+                animation: loading-rotate 2s linear infinite;
+      }
+  
+      .circular .path {
+        -webkit-animation: loading-dash 1.5s ease-in-out infinite;
+                animation: loading-dash 1.5s ease-in-out infinite;
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: 0;
+        stroke-width: 2;
+        stroke: #4073fa;
+        stroke-linecap: round;
+      }
+  
+      @-webkit-keyframes loading-rotate {
+        100% {
+          transform: rotate(1turn);
+        }
+      }
+  
+      @keyframes loading-rotate {
+        100% {
+          transform: rotate(1turn);
+        }
+      }
+  
+      @-webkit-keyframes loading-dash {
+  
+        0% {
+          stroke-dasharray: 90, 150;
+          stroke-dashoffset: -40px;
+        }
+  
+        100% {
+          stroke-dasharray: 90, 150;
+          stroke-dashoffset: -120px;
+        }
+      }
+  
+      @keyframes loading-dash {
+  
+        0% {
+          stroke-dasharray: 90, 150;
+          stroke-dashoffset: -40px;
+        }
+  
+        100% {
+          stroke-dasharray: 90, 150;
+          stroke-dashoffset: -120px;
+        }
+      }
+    </style>
+    <script type="module" crossorigin src="/assets/index.dfbcbc64.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/@vue.e8706010.js">
+    <link rel="modulepreload" crossorigin href="/assets/@vueuse.fc17487b.js">
+    <link rel="modulepreload" crossorigin href="/assets/@element-plus.196c7323.js">
+    <link rel="modulepreload" crossorigin href="/assets/lodash-es.29c53eac.js">
+    <link rel="modulepreload" crossorigin href="/assets/axios.4b699959.js">
+    <link rel="modulepreload" crossorigin href="/assets/dayjs.7ee64147.js">
+    <link rel="modulepreload" crossorigin href="/assets/async-validator.fb49d0f5.js">
+    <link rel="modulepreload" crossorigin href="/assets/@ctrl.82a509e0.js">
+    <link rel="modulepreload" crossorigin href="/assets/@popperjs.36402333.js">
+    <link rel="modulepreload" crossorigin href="/assets/escape-html.e5dfadb9.js">
+    <link rel="modulepreload" crossorigin href="/assets/normalize-wheel-es.8aeb3683.js">
+    <link rel="modulepreload" crossorigin href="/assets/element-plus.bd180455.js">
+    <link rel="modulepreload" crossorigin href="/assets/lodash.b9547e51.js">
+    <link rel="modulepreload" crossorigin href="/assets/vue-router.12d45bc3.js">
+    <link rel="modulepreload" crossorigin href="/assets/vue-demi.ebc8116b.js">
+    <link rel="modulepreload" crossorigin href="/assets/pinia.dfca86b4.js">
+    <link rel="modulepreload" crossorigin href="/assets/clone.74146231.js">
+    <link rel="modulepreload" crossorigin href="/assets/color-name.e7a4e1d3.js">
+    <link rel="modulepreload" crossorigin href="/assets/color-convert.755d189f.js">
+    <link rel="modulepreload" crossorigin href="/assets/color-string.e356f5de.js">
+    <link rel="modulepreload" crossorigin href="/assets/color.e792885a.js">
+    <link rel="modulepreload" crossorigin href="/assets/balanced-match.d2a36341.js">
+    <link rel="modulepreload" crossorigin href="/assets/ms.a9ae1d6d.js">
+    <link rel="modulepreload" crossorigin href="/assets/debug.4a61e4bd.js">
+    <link rel="modulepreload" crossorigin href="/assets/css-color-function.ab34b7c7.js">
+    <link rel="modulepreload" crossorigin href="/assets/nprogress.9356e04c.js">
+    <link rel="modulepreload" crossorigin href="/assets/clipboard.67d6e471.js">
+    <link rel="modulepreload" crossorigin href="/assets/vue-clipboard3.b4d0a2c0.js">
+    <link rel="modulepreload" crossorigin href="/assets/tslib.60310f1a.js">
+    <link rel="modulepreload" crossorigin href="/assets/zrender.8ee1a698.js">
+    <link rel="modulepreload" crossorigin href="/assets/echarts.234b3572.js">
+    <link rel="modulepreload" crossorigin href="/assets/highlight.js.4ebdf9a4.js">
+    <link rel="modulepreload" crossorigin href="/assets/@highlightjs.2cdc8407.js">
+    <link rel="stylesheet" href="/assets/element-plus.57062287.css">
+    <link rel="stylesheet" href="/assets/nprogress.a2a0c377.css">
+    <link rel="stylesheet" href="/assets/highlight.5f5db245.css">
+    <link rel="stylesheet" href="/assets/index.6dc9dbb9.css">
+  </head>
+  <body>
+    <!--
+      THESIS: A working nail studio operations desk, not a generic admin dashboard or decorative AI template.
+      OWN-WORLD: Warm porcelain canvas, paper-white work surfaces, hairline taupe rules, restrained dusty-rose focus, square editorial modules.
+      STORY: Operators see pending nail work, start a text or reference design, inspect recent assets, and enter the same traceable AI workflow.
+      FIRST VIEWPORT: A compact studio heading leads into a four-cell production strip, then creation, latest run, asset and task regions above the fold.
+      FORM: Reference-pinned editorial operations board; seed dd920022.
+      FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+    -->
+    <div id="app">
+      <div class="preload">
+        <svg viewBox="25 25 50 50" class="circular">
+          <circle cx="50" cy="50" r="20" fill="none" class="path"></circle>
+        </svg>
+      </div>
+    </div>
+    
+  </body>
+</html>

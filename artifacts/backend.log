@@ -1,0 +1,48 @@
+Spring Boot Version: 2.7.18
+///////////////////////////////////////////////////////
+//   _     _ _        _       _           _          //
+//  | |   (_) | __   / \   __| |_ __ ___ (_)_ __     //
+//  | |   | | |/ /  / _ \ / _` | '_ ` _ \| | '_ \    //
+//  | |___| |   <  / ___ \ (_| | | | | | | | | | |   //
+//  |_____|_|_|\_\/_/   \_\__,_|_| |_| |_|_|_| |_|   //
+//   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^    //
+//       佛祖保佑       永不宕机      永无BUG         //
+//////////////////////////////////////////////////////
+20:33:54.715 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+20:33:54.757 [main] INFO  com.mdd.admin.LikeAdminApplication - Starting LikeAdminApplication using Java 21.0.6 on angle with PID 27268 (C:\Users\15367\Desktop\likeadmin_java-master\server\like-admin\target\like-admin-1.0.0.jar started by 15367 in C:\Users\15367\Desktop\likeadmin_java-master\server\like-admin)
+20:33:54.759 [main] INFO  com.mdd.admin.LikeAdminApplication - The following 2 profiles are active: "dev", "local"
+20:33:56.364 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8082 (http)
+20:33:56.371 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
+20:33:56.372 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+20:33:56.372 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.83]
+20:33:56.426 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+20:33:56.426 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1633 ms
+20:33:57.108 [main] INFO  org.quartz.impl.StdSchedulerFactory - Using default implementation for ThreadExecutor
+20:33:57.127 [main] INFO  org.quartz.core.SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+20:33:57.128 [main] INFO  org.quartz.core.QuartzScheduler - Quartz Scheduler v.2.3.2 created.
+20:33:57.130 [main] INFO  org.quartz.simpl.RAMJobStore - RAMJobStore initialized.
+20:33:57.131 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+20:33:57.131 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+20:33:57.131 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler version: 2.3.2
+20:33:57.131 [main] INFO  org.quartz.core.QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@f72203
+20:33:57.264 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Starting...
+20:33:57.447 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Start completed.
+20:33:59.641 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
+20:33:59.656 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8082 (http) with context path ''
+20:34:00.411 [main] INFO  org.springframework.scheduling.quartz.SchedulerFactoryBean - Starting Quartz Scheduler now
+20:34:00.412 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED started.
+20:34:00.420 [main] INFO  com.mdd.admin.LikeAdminApplication - Started LikeAdminApplication in 6.026 seconds (JVM running for 6.634)
+20:34:29.690 [http-nio-8082-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+20:34:29.691 [http-nio-8082-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+20:34:29.692 [http-nio-8082-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+20:34:29.705 [http-nio-8082-exec-1] WARN  org.springframework.web.servlet.PageNotFound - No mapping for GET /admin/
+20:35:03.141 [http-nio-8082-exec-3] WARN  org.springframework.web.servlet.PageNotFound - No mapping for GET /admin/
+20:35:42.274 [http-nio-8082-exec-5] WARN  org.springframework.web.servlet.PageNotFound - No mapping for GET /admin/
+20:35:42.361 [http-nio-8082-exec-6] WARN  org.springframework.web.servlet.PageNotFound - No mapping for GET /favicon.ico

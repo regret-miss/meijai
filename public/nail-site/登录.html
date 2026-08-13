@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="登录指尖湘韵，继续你的 AI 美甲设计。">
+  <title>登录 | 指尖湘韵</title>
+  <link rel="stylesheet" href="css/redesign.css">
+  <link rel="stylesheet" href="css/public-polish.css">
+  <link rel="stylesheet" href="css/site-nav-preserve.css">
+  <link rel="stylesheet" href="css/member-login.css?v=20260813-ancient2">
+</head>
+<body class="member-login-page">
+  <a class="skip-link" href="#memberLogin">跳至登录表单</a>
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <a class="brand" href="首页.html" aria-label="返回指尖湘韵首页">
+        <span class="brand-seal" aria-hidden="true">湘</span>
+        <span class="brand-copy"><span class="brand-name">指尖湘韵</span><span class="brand-en">NAIL ART · XIANG</span></span>
+      </a>
+      <span class="header-note">登录创作</span>
+      <nav class="site-nav" id="siteNav" aria-label="主导航">
+        <a href="首页.html">首页</a><a href="美甲款式.html">美甲款式</a><a href="美甲师.html">美甲师</a><a href="AI.html">AI 创作</a><a href="会员福利.html">会员福利</a><a href="首页.html#contact">联系我们</a><span class="nav-indicator" id="navIndicator" aria-hidden="true"></span>
+      </nav>
+      <button class="nav-menu" id="navMenu" type="button" aria-label="打开导航" aria-expanded="false"><span></span></button>
+    </div>
+  </header>
+
+  <main class="member-login-main" id="memberLogin">
+    <section class="member-login-story" aria-labelledby="loginTitle">
+      <div class="story-seal" aria-hidden="true">甲</div>
+      <h1 id="loginTitle">一念落纸<br>灵感续作</h1>
+      <p>登录后，刚才写下的设计需求会原样回到创作卷。你的身份与灵感各归其位，无需再次输入。</p>
+      <figure class="login-preview">
+        <img src="static/mj(30).jpg" alt="裸粉色高光美甲作品">
+        <figcaption><span>湘韵甲艺</span><b>以甲为笺，以色入画</b></figcaption>
+      </figure>
+    </section>
+
+    <section class="member-login-card" aria-labelledby="formTitle">
+      <header class="login-card-heading">
+        <span class="heading-mark" aria-hidden="true">湘</span>
+        <div><h2 id="formTitle">入席创作</h2><p id="loginContext">选择身份并登录，继续进入 AI 美甲设计工作台。</p></div>
+      </header>
+
+      <div class="identity-switch" role="tablist" aria-label="选择登录身份">
+        <button class="is-active" type="button" role="tab" aria-selected="true" data-role="USER">
+          <span>用户</span><small>继续个人灵感创作</small>
+        </button>
+        <button type="button" role="tab" aria-selected="false" data-role="ADMIN">
+          <span>管理员</span><small>使用运营管理身份</small>
+        </button>
+      </div>
+
+      <div class="saved-brief" id="savedBrief" hidden>
+        <span>已留存的设计意图</span>
+        <p id="savedBriefText"></p>
+      </div>
+
+      <form class="member-login-form" id="memberLoginForm" novalidate data-role="USER">
+        <div class="member-field">
+          <label for="memberUsername">账号</label>
+          <input id="memberUsername" name="username" type="text" autocomplete="username" minlength="2" maxlength="32" placeholder="请输入用户账号" required>
+        </div>
+        <div class="member-field">
+          <div class="field-label-row"><label for="memberPassword">密码</label><button id="passwordToggle" type="button" aria-controls="memberPassword" aria-pressed="false">显示密码</button></div>
+          <input id="memberPassword" name="password" type="password" autocomplete="current-password" minlength="6" maxlength="32" placeholder="请输入登录密码" required>
+        </div>
+        <div class="member-field admin-captcha" id="adminCaptcha" hidden>
+          <label for="memberCode">验证码</label>
+          <div class="captcha-control">
+            <input id="memberCode" name="code" type="text" inputmode="text" autocomplete="off" maxlength="8" placeholder="请输入图中字符">
+            <button id="captchaRefresh" type="button" aria-label="换一张验证码"><span>正在获取</span></button>
+          </div>
+          <small>看不清时点击图片更换</small>
+        </div>
+        <label class="remember-account"><input id="rememberAccount" type="checkbox"><span>记住账号</span></label>
+        <p class="member-login-message" id="memberLoginMessage" role="status" aria-live="polite"></p>
+        <div class="member-login-actions">
+          <button class="member-login-submit" id="memberLoginSubmit" type="submit"><span>登录并继续创作</span><i aria-hidden="true"></i></button>
+          <a class="member-login-back" href="首页.html">返回首页</a>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script src="js/site-nav-preserve.js"></script>
+  <script src="js/member-auth.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      const form = document.getElementById("memberLoginForm");
+      const username = document.getElementById("memberUsername");
+      const password = document.getElementById("memberPassword");
+      const passwordToggle = document.getElementById("passwordToggle");
+      const code = document.getElementById("memberCode");
+      const captcha = document.getElementById("adminCaptcha");
+      const captchaRefresh = document.getElementById("captchaRefresh");
+      const remember = document.getElementById("rememberAccount");
+      const submit = document.getElementById("memberLoginSubmit");
+      const message = document.getElementById("memberLoginMessage");
+      const context = document.getElementById("loginContext");
+      const savedBrief = document.getElementById("savedBrief");
+      const savedBriefText = document.getElementById("savedBriefText");
+      const identityButtons = [...document.querySelectorAll("[data-role]")];
+      const redirectParam = new URLSearchParams(location.search).get("redirect");
+      const redirect = redirectParam && /^[\w\u4e00-\u9fa5./-]+(?:\?.*)?$/.test(redirectParam) ? redirectParam : "AI.html";
+      const accountKey = "xiang-nail-login-account";
+      let captchaUuid = "";
+
+      const pending = window.NailMemberAuth.peekPrompt();
+      if (pending) {
+        savedBrief.hidden = false;
+        savedBriefText.textContent = pending;
+        context.textContent = "你的设计意图已经妥善留存，登录后将自动回填。";
+      }
+
+      try {
+        const stored = JSON.parse(localStorage.getItem(accountKey) || "null");
+        if (stored?.username) {
+          username.value = stored.username;
+          remember.checked = true;
+        }
+      } catch {
+        localStorage.removeItem(accountKey);
+      }
+
+      async function loadCaptcha() {
+        captchaRefresh.disabled = true;
+        const loadingText = document.createElement("span");
+        loadingText.textContent = "正在获取";
+        captchaRefresh.replaceChildren(loadingText);
+        try {
+          const data = await window.NailMemberAuth.captcha();
+          captchaUuid = data.uuid;
+          const captchaImage = document.createElement("img");
+          captchaImage.src = data.img;
+          captchaImage.alt = "登录验证码";
+          captchaRefresh.replaceChildren(captchaImage);
+        } catch (error) {
+          captchaUuid = "";
+          loadingText.textContent = "点击重试";
+          message.textContent = error.message || "验证码加载失败，请点击重试";
+        } finally {
+          captchaRefresh.disabled = false;
+        }
+      }
+
+      function setRole(role) {
+        const isAdmin = role === "ADMIN";
+        form.dataset.role = role;
+        captcha.hidden = !isAdmin;
+        code.required = isAdmin;
+        username.placeholder = isAdmin ? "请输入管理员账号" : "请输入用户账号";
+        context.textContent = pending
+          ? "你的设计意图已经妥善留存，登录后将自动回填。"
+          : isAdmin ? "验证运营管理身份，登录后继续本次 AI 创作。" : "登录用户账号，继续进入 AI 美甲设计工作台。";
+        identityButtons.forEach(button => {
+          const active = button.dataset.role === role;
+          button.classList.toggle("is-active", active);
+          button.setAttribute("aria-selected", String(active));
+        });
+        message.textContent = "";
+        if (isAdmin && !captchaUuid) void loadCaptcha();
+      }
+
+      identityButtons.forEach(button => button.addEventListener("click", () => setRole(button.dataset.role)));
+      captchaRefresh.addEventListener("click", loadCaptcha);
+      passwordToggle.addEventListener("click", () => {
+        const reveal = password.type === "password";
+        password.type = reveal ? "text" : "password";
+        passwordToggle.textContent = reveal ? "隐藏密码" : "显示密码";
+        passwordToggle.setAttribute("aria-pressed", String(reveal));
+        password.focus({ preventScroll: true });
+      });
+
+      try {
+        const session = await window.NailMemberAuth.session();
+        if (session?.loggedIn) {
+          message.textContent = `${session.roleName || "账号"}身份有效，正在返回创作台`;
+          message.classList.add("is-success");
+          location.replace(redirect);
+          return;
+        }
+      } catch {
+        message.textContent = "登录服务暂时不可用，请稍后重试";
+      }
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const role = form.dataset.role;
+        message.classList.remove("is-success");
+        if (username.value.trim().length < 2) {
+          message.textContent = "请输入至少 2 位账号";
+          username.focus();
+          return;
+        }
+        if (password.value.length < 6) {
+          message.textContent = "密码至少需要 6 位";
+          password.focus();
+          return;
+        }
+        if (role === "ADMIN" && !code.value.trim()) {
+          message.textContent = "请输入验证码";
+          code.focus();
+          return;
+        }
+
+        submit.disabled = true;
+        submit.classList.add("is-loading");
+        submit.querySelector("span").textContent = "正在核验身份";
+        message.textContent = "";
+        try {
+          const session = await window.NailMemberAuth.login(username.value.trim(), password.value, {
+            role,
+            code: code.value.trim(),
+            uuid: captchaUuid
+          });
+          if (remember.checked) localStorage.setItem(accountKey, JSON.stringify({ username: username.value.trim() }));
+          else localStorage.removeItem(accountKey);
+          message.textContent = `${session.roleName || "账号"}登录成功，正在恢复设计意图`;
+          message.classList.add("is-success");
+          location.replace(redirect);
+        } catch (error) {
+          message.textContent = error.message || "登录失败，请检查账号和密码";
+          if (role === "ADMIN") {
+            code.value = "";
+            await loadCaptcha();
+          }
+          submit.disabled = false;
+          submit.classList.remove("is-loading");
+          submit.querySelector("span").textContent = "登录并继续创作";
+        }
+      });
+    });
+  </script>
+</body>
+</html>

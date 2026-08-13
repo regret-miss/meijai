@@ -1,0 +1,56 @@
+package com.mdd.front.config;
+
+import com.mdd.common.config.GlobalConfig;
+import com.mdd.common.util.YmlUtils;
+import com.mdd.front.LikeFrontInterceptor;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.lang.NonNull;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import javax.annotation.Resource;
+
+@Configuration
+public class WebMvcConfig implements WebMvcConfigurer {
+
+    @Value("${like.cors.allowed-origin-patterns:http://127.0.0.1:*,http://localhost:*}")
+    private String[] allowedOriginPatterns;
+
+    @Resource
+    LikeFrontInterceptor likeFrontInterceptor;
+
+    /**
+     * 配置允许跨域
+     */
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedOriginPatterns(allowedOriginPatterns)
+                .allowedHeaders("*")
+                .allowedMethods("GET", "POST", "DELETE", "PUT", "OPTIONS")
+                .allowCredentials(true)
+                .maxAge(3600);
+    }
+
+    /**
+     * 登录拦截器
+     */
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(likeFrontInterceptor).addPathPatterns("/**");
+    }
+
+    /**
+     * 资源目录映射
+     */
+    @Override
+    public void addResourceHandlers(@NonNull ResourceHandlerRegistry registry) {
+        String directory = YmlUtils.get("like.upload-directory");
+        registry.addResourceHandler("/"+ GlobalConfig.publicPrefix +"/**")
+                .addResourceLocations("file:" + directory);
+    }
+
+}

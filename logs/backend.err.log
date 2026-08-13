@@ -1,0 +1,54 @@
+Exception in thread "DateSourceHikariCP connection closer" java.lang.NoClassDefFoundError: com/mysql/jdbc/ProfilerEventHandlerFactory
+	at com.mysql.jdbc.ConnectionImpl.realClose(ConnectionImpl.java:4226)
+	at com.mysql.jdbc.ConnectionImpl.close(ConnectionImpl.java:1462)
+	at com.zaxxer.hikari.pool.PoolBase.quietlyCloseConnection(PoolBase.java:143)
+	at com.zaxxer.hikari.pool.HikariPool.lambda$closeConnection$1(HikariPool.java:451)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.ClassNotFoundException: com.mysql.jdbc.ProfilerEventHandlerFactory
+	at java.base/java.net.URLClassLoader.findClass(URLClassLoader.java:445)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:593)
+	at org.springframework.boot.loader.LaunchedURLClassLoader.loadClass(LaunchedURLClassLoader.java:151)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+	... 7 more
+Exception in thread "DateSourceHikariCP connection closer" java.lang.NoClassDefFoundError: com/mysql/jdbc/ProfilerEventHandlerFactory
+	at com.mysql.jdbc.ConnectionImpl.realClose(ConnectionImpl.java:4226)
+	at com.mysql.jdbc.ConnectionImpl.close(ConnectionImpl.java:1462)
+	at com.zaxxer.hikari.pool.PoolBase.quietlyCloseConnection(PoolBase.java:143)
+	at com.zaxxer.hikari.pool.HikariPool.lambda$closeConnection$1(HikariPool.java:451)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.ClassNotFoundException: com.mysql.jdbc.ProfilerEventHandlerFactory
+	... 7 more
+Exception in thread "DateSourceHikariCP connection closer" java.lang.NoClassDefFoundError: com/mysql/jdbc/ProfilerEventHandlerFactory
+	at com.mysql.jdbc.ConnectionImpl.realClose(ConnectionImpl.java:4226)
+	at com.mysql.jdbc.ConnectionImpl.close(ConnectionImpl.java:1462)
+	at com.zaxxer.hikari.pool.PoolBase.quietlyCloseConnection(PoolBase.java:143)
+	at com.zaxxer.hikari.pool.HikariPool.lambda$closeConnection$1(HikariPool.java:451)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.ClassNotFoundException: com.mysql.jdbc.ProfilerEventHandlerFactory
+	... 7 more
+Exception in thread "DateSourceHikariCP connection closer" java.lang.NoClassDefFoundError: com/mysql/jdbc/ProfilerEventHandlerFactory
+	at com.mysql.jdbc.ConnectionImpl.realClose(ConnectionImpl.java:4226)
+	at com.mysql.jdbc.ConnectionImpl.close(ConnectionImpl.java:1462)
+	at com.zaxxer.hikari.pool.PoolBase.quietlyCloseConnection(PoolBase.java:143)
+	at com.zaxxer.hikari.pool.HikariPool.lambda$closeConnection$1(HikariPool.java:451)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.ClassNotFoundException: com.mysql.jdbc.ProfilerEventHandlerFactory
+	... 7 more
+Exception in thread "DateSourceHikariCP connection closer" java.lang.NoClassDefFoundError: com/mysql/jdbc/ProfilerEventHandlerFactory
+	at com.mysql.jdbc.ConnectionImpl.realClose(ConnectionImpl.java:4226)
+	at com.mysql.jdbc.ConnectionImpl.close(ConnectionImpl.java:1462)
+	at com.zaxxer.hikari.pool.PoolBase.quietlyCloseConnection(PoolBase.java:143)
+	at com.zaxxer.hikari.pool.HikariPool.lambda$closeConnection$1(HikariPool.java:451)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.ClassNotFoundException: com.mysql.jdbc.ProfilerEventHandlerFactory
+	... 7 more

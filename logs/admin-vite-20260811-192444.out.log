@@ -1,0 +1,16 @@
+
+> vue-project@0.0.0 dev
+> vite --host 127.0.0.1
+
+
+  [32m[1mVITE[22m v3.0.4[39m  [2mready in [37m[1m644[22m[2m[39m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://127.0.0.1:[1m5173[22m/[39m
+[2m19:25:38[22m [36m[1m[vite][22m[39m [32m✨ new dependencies optimized: [33melement-plus/es/components/checkbox/style/css, element-plus/es/components/form/style/css, element-plus/es/components/form-item/style/css, element-plus/es/components/input/style/css[32m[39m
+[2m19:29:09[22m [36m[1m[vite][22m[39m [32m✨ new dependencies optimized: [33melement-plus/es/components/card/style/css, vue-echarts[32m[39m
+[2m19:29:09[22m [36m[1m[vite][22m[39m [32m✨ optimized dependencies changed. reloading[39m
+[2m19:30:22[22m [36m[1m[vite][22m[39m [32m✨ new dependencies optimized: [33melement-plus/es/components/loading/style/css, element-plus/es/components/table/style/css, element-plus/es/components/table-column/style/css, element-plus/es/components/select/style/css, element-plus/es/components/option/style/css, ...and 2 more[32m[39m
+[2m19:30:22[22m [36m[1m[vite][22m[39m [32m✨ optimized dependencies changed. reloading[39m
+[2m19:30:28[22m [36m[1m[vite][22m[39m [32m✨ new dependencies optimized: [33melement-plus/es/components/tag/style/css, element-plus/es/components/tree-select/style/css[32m[39m
+[2m19:58:06[22m [36m[1m[vite][22m[39m [32mpage reload [39m[2msrc/views/nail/ai/index.vue[22m
+[2m19:58:47[22m [36m[1m[vite][22m[39m [32mpage reload [39m[2msrc/views/nail/assets/index.vue[22m

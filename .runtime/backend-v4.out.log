@@ -1,0 +1,67 @@
+Spring Boot Version: 2.7.18
+///////////////////////////////////////////////////////
+//   _     _ _        _       _           _          //
+//  | |   (_) | __   / \   __| |_ __ ___ (_)_ __     //
+//  | |   | | |/ /  / _ \ / _` | '_ ` _ \| | '_ \    //
+//  | |___| |   <  / ___ \ (_| | | | | | | | | | |   //
+//  |_____|_|_|\_\/_/   \_\__,_|_| |_| |_|_|_| |_|   //
+//   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^    //
+//       ·ð×æ±£ÓÓ       ÓÀ²»å´»ú      ÓÀÎÞBUG         //
+//////////////////////////////////////////////////////
+18:05:07.040 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+18:05:07.073 [main] INFO  com.mdd.admin.LikeAdminApplication - Starting LikeAdminApplication using Java 21.0.12 on angle with PID 1208 (G:\desktop\likeadmin_java-master\server\like-admin\target\like-admin-1.0.0.jar started by 15367 in G:\desktop\likeadmin_java-master\server\like-admin)
+18:05:07.075 [main] INFO  com.mdd.admin.LikeAdminApplication - The following 2 profiles are active: "dev", "local"
+18:05:08.503 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8082 (http)
+18:05:08.510 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
+18:05:08.510 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+18:05:08.511 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.83]
+18:05:08.559 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+18:05:08.560 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1456 ms
+18:05:09.226 [main] INFO  org.quartz.impl.StdSchedulerFactory - Using default implementation for ThreadExecutor
+18:05:09.242 [main] INFO  org.quartz.core.SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+18:05:09.242 [main] INFO  org.quartz.core.QuartzScheduler - Quartz Scheduler v.2.3.2 created.
+18:05:09.243 [main] INFO  org.quartz.simpl.RAMJobStore - RAMJobStore initialized.
+18:05:09.244 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+18:05:09.244 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+18:05:09.245 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler version: 2.3.2
+18:05:09.245 [main] INFO  org.quartz.core.QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@2ba33e2c
+18:05:09.371 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Starting...
+18:05:09.488 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Start completed.
+18:05:11.412 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
+18:05:11.428 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8082 (http) with context path ''
+18:05:12.040 [main] INFO  org.springframework.scheduling.quartz.SchedulerFactoryBean - Starting Quartz Scheduler now
+18:05:12.041 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED started.
+18:05:12.049 [main] INFO  com.mdd.admin.LikeAdminApplication - Started LikeAdminApplication in 5.293 seconds (JVM running for 5.798)
+18:05:24.627 [http-nio-8082-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+18:05:24.628 [http-nio-8082-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+18:05:24.630 [http-nio-8082-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+18:05:24.647 [http-nio-8082-exec-1] WARN  org.apache.coyote.http11.Http11Processor - The HTTP response header [Location] with value [http://127.0.0.1:8082/nail-site/é¦–é¡µ.html] has been removed from the response because it is invalid
+java.lang.IllegalArgumentException: The Unicode character [é¦–] at code point [39,318] cannot be encoded as it is outside the permitted range of 0 to 255
+	at org.apache.tomcat.util.buf.MessageBytes.toBytesSimple(MessageBytes.java:310) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.tomcat.util.buf.MessageBytes.toBytes(MessageBytes.java:283) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.coyote.http11.Http11OutputBuffer.write(Http11OutputBuffer.java:389) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.coyote.http11.Http11OutputBuffer.sendHeader(Http11OutputBuffer.java:368) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.coyote.http11.Http11Processor.prepareResponse(Http11Processor.java:1048) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.coyote.AbstractProcessor.action(AbstractProcessor.java:376) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.coyote.Response.action(Response.java:209) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.coyote.Response.sendHeaders(Response.java:437) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:291) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.catalina.connector.OutputBuffer.close(OutputBuffer.java:250) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.catalina.connector.Response.finishResponse(Response.java:439) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:371) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:928) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1794) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at java.lang.Thread.run(Thread.java:1583) ~[?:?]

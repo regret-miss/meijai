@@ -1,0 +1,543 @@
+14:08:01.797 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+14:08:01.832 [main] INFO  com.mdd.admin.LikeAdminApplication - Starting LikeAdminApplication using Java 21.0.12 on angle with PID 19452 (G:\desktop\likeadmin_java-master\server\like-admin\target\like-admin-1.0.0.jar started by 15367 in G:\desktop\likeadmin_java-master\server\like-admin)
+14:08:01.835 [main] INFO  com.mdd.admin.LikeAdminApplication - The following 2 profiles are active: "dev", "local"
+14:08:03.318 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
+14:08:03.319 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+14:08:03.320 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.83]
+14:08:03.382 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+14:08:04.102 [main] INFO  org.quartz.impl.StdSchedulerFactory - Using default implementation for ThreadExecutor
+14:08:04.114 [main] INFO  org.quartz.core.SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+14:08:04.114 [main] INFO  org.quartz.core.QuartzScheduler - Quartz Scheduler v.2.3.2 created.
+14:08:04.115 [main] INFO  org.quartz.simpl.RAMJobStore - RAMJobStore initialized.
+14:08:04.116 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+14:08:04.116 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+14:08:04.116 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler version: 2.3.2
+14:08:04.116 [main] INFO  org.quartz.core.QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@540dbda9
+14:08:04.208 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Starting...
+14:08:04.324 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Start completed.
+14:08:06.319 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
+14:08:07.023 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED started.
+14:08:07.031 [main] INFO  com.mdd.admin.LikeAdminApplication - Started LikeAdminApplication in 5.53 seconds (JVM running for 6.045)
+14:08:46.481 [http-nio-8082-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+14:20:03.260 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+14:20:03.295 [main] INFO  com.mdd.admin.LikeAdminApplication - Starting LikeAdminApplication using Java 21.0.12 on angle with PID 29948 (G:\desktop\likeadmin_java-master\server\like-admin\target\like-admin-1.0.0.jar started by 15367 in G:\desktop\likeadmin_java-master\server\like-admin)
+14:20:03.297 [main] INFO  com.mdd.admin.LikeAdminApplication - The following 2 profiles are active: "dev", "local"
+14:20:04.819 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
+14:20:04.820 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+14:20:04.820 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.83]
+14:20:04.875 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+14:20:05.546 [main] INFO  org.quartz.impl.StdSchedulerFactory - Using default implementation for ThreadExecutor
+14:20:05.558 [main] INFO  org.quartz.core.SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+14:20:05.558 [main] INFO  org.quartz.core.QuartzScheduler - Quartz Scheduler v.2.3.2 created.
+14:20:05.559 [main] INFO  org.quartz.simpl.RAMJobStore - RAMJobStore initialized.
+14:20:05.561 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+14:20:05.561 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+14:20:05.561 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler version: 2.3.2
+14:20:05.561 [main] INFO  org.quartz.core.QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@540dbda9
+14:20:05.644 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Starting...
+14:20:05.764 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Start completed.
+14:20:07.715 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
+14:20:08.373 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED started.
+14:20:08.381 [main] INFO  com.mdd.admin.LikeAdminApplication - Started LikeAdminApplication in 5.414 seconds (JVM running for 5.923)
+14:20:16.393 [http-nio-8082-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+14:20:30.079 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+14:20:30.112 [main] INFO  com.mdd.admin.LikeAdminApplication - Starting LikeAdminApplication using Java 21.0.12 on angle with PID 7132 (G:\desktop\likeadmin_java-master\server\like-admin\target\like-admin-1.0.0.jar started by 15367 in G:\desktop\likeadmin_java-master\server\like-admin)
+14:20:30.115 [main] INFO  com.mdd.admin.LikeAdminApplication - The following 2 profiles are active: "dev", "local"
+14:20:31.593 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
+14:20:31.594 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+14:20:31.594 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.83]
+14:20:31.645 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+14:20:32.276 [main] INFO  org.quartz.impl.StdSchedulerFactory - Using default implementation for ThreadExecutor
+14:20:32.289 [main] INFO  org.quartz.core.SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+14:20:32.290 [main] INFO  org.quartz.core.QuartzScheduler - Quartz Scheduler v.2.3.2 created.
+14:20:32.292 [main] INFO  org.quartz.simpl.RAMJobStore - RAMJobStore initialized.
+14:20:32.292 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+14:20:32.293 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+14:20:32.293 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler version: 2.3.2
+14:20:32.293 [main] INFO  org.quartz.core.QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@377008df
+14:20:32.403 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Starting...
+14:20:32.565 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Start completed.
+14:20:34.336 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
+14:20:34.993 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED started.
+14:20:35.002 [main] INFO  com.mdd.admin.LikeAdminApplication - Started LikeAdminApplication in 5.208 seconds (JVM running for 5.719)
+14:20:41.632 [http-nio-8082-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+14:21:30.412 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+14:21:30.444 [main] INFO  com.mdd.admin.LikeAdminApplication - Starting LikeAdminApplication using Java 21.0.12 on angle with PID 25564 (G:\desktop\likeadmin_java-master\server\like-admin\target\like-admin-1.0.0.jar started by 15367 in G:\desktop\likeadmin_java-master\server\like-admin)
+14:21:30.446 [main] INFO  com.mdd.admin.LikeAdminApplication - The following 2 profiles are active: "dev", "local"
+14:21:31.951 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
+14:21:31.952 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+14:21:31.953 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.83]
+14:21:32.005 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+14:21:32.649 [main] INFO  org.quartz.impl.StdSchedulerFactory - Using default implementation for ThreadExecutor
+14:21:32.661 [main] INFO  org.quartz.core.SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+14:21:32.661 [main] INFO  org.quartz.core.QuartzScheduler - Quartz Scheduler v.2.3.2 created.
+14:21:32.662 [main] INFO  org.quartz.simpl.RAMJobStore - RAMJobStore initialized.
+14:21:32.662 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+14:21:32.662 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+14:21:32.662 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler version: 2.3.2
+14:21:32.663 [main] INFO  org.quartz.core.QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@22bb5646
+14:21:32.759 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Starting...
+14:21:32.879 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Start completed.
+14:21:34.773 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
+14:21:35.406 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED started.
+14:21:35.414 [main] INFO  com.mdd.admin.LikeAdminApplication - Started LikeAdminApplication in 5.3 seconds (JVM running for 5.84)
+14:21:44.730 [http-nio-8082-exec-2] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+14:22:03.079 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+14:22:03.112 [main] INFO  com.mdd.admin.LikeAdminApplication - Starting LikeAdminApplication using Java 21.0.12 on angle with PID 31460 (G:\desktop\likeadmin_java-master\server\like-admin\target\like-admin-1.0.0.jar started by 15367 in G:\desktop\likeadmin_java-master\server\like-admin)
+14:22:03.114 [main] INFO  com.mdd.admin.LikeAdminApplication - The following 2 profiles are active: "dev", "local"
+14:22:04.561 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
+14:22:04.561 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+14:22:04.562 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.83]
+14:22:04.619 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+14:22:05.201 [main] INFO  org.quartz.impl.StdSchedulerFactory - Using default implementation for ThreadExecutor
+14:22:05.213 [main] INFO  org.quartz.core.SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+14:22:05.213 [main] INFO  org.quartz.core.QuartzScheduler - Quartz Scheduler v.2.3.2 created.
+14:22:05.214 [main] INFO  org.quartz.simpl.RAMJobStore - RAMJobStore initialized.
+14:22:05.215 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+14:22:05.215 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+14:22:05.215 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler version: 2.3.2
+14:22:05.216 [main] INFO  org.quartz.core.QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@377008df
+14:22:05.306 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Starting...
+14:22:05.439 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Start completed.
+14:22:07.266 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
+14:22:07.915 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED started.
+14:22:07.924 [main] INFO  com.mdd.admin.LikeAdminApplication - Started LikeAdminApplication in 5.128 seconds (JVM running for 5.62)
+14:22:19.152 [http-nio-8082-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+15:00:42.881 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+15:00:42.919 [main] INFO  com.mdd.admin.LikeAdminApplication - Starting LikeAdminApplication using Java 21.0.12 on angle with PID 17484 (G:\desktop\likeadmin_java-master\server\like-admin\target\like-admin-1.0.0.jar started by 15367 in G:\desktop\likeadmin_java-master\server\like-admin)
+15:00:42.923 [main] INFO  com.mdd.admin.LikeAdminApplication - The following 2 profiles are active: "dev", "local"
+15:00:44.442 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
+15:00:44.444 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+15:00:44.444 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.83]
+15:00:44.498 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+15:00:45.167 [main] INFO  org.quartz.impl.StdSchedulerFactory - Using default implementation for ThreadExecutor
+15:00:45.183 [main] INFO  org.quartz.core.SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+15:00:45.183 [main] INFO  org.quartz.core.QuartzScheduler - Quartz Scheduler v.2.3.2 created.
+15:00:45.184 [main] INFO  org.quartz.simpl.RAMJobStore - RAMJobStore initialized.
+15:00:45.186 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+15:00:45.186 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+15:00:45.186 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler version: 2.3.2
+15:00:45.186 [main] INFO  org.quartz.core.QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@1be59f28
+15:00:45.282 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Starting...
+15:00:45.404 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Start completed.
+15:00:47.296 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
+15:00:47.929 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED started.
+15:00:47.937 [main] INFO  com.mdd.admin.LikeAdminApplication - Started LikeAdminApplication in 5.346 seconds (JVM running for 5.895)
+15:01:40.142 [http-nio-8082-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+15:02:53.088 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+15:02:53.122 [main] INFO  com.mdd.admin.LikeAdminApplication - Starting LikeAdminApplication using Java 21.0.12 on angle with PID 9580 (G:\desktop\likeadmin_java-master\server\like-admin\target\like-admin-1.0.0.jar started by 15367 in G:\desktop\likeadmin_java-master\server\like-admin)
+15:02:53.124 [main] INFO  com.mdd.admin.LikeAdminApplication - The following 2 profiles are active: "dev", "local"
+15:02:54.680 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
+15:02:54.681 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+15:02:54.681 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.83]
+15:02:54.739 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+15:02:55.503 [main] INFO  org.quartz.impl.StdSchedulerFactory - Using default implementation for ThreadExecutor
+15:02:55.524 [main] INFO  org.quartz.core.SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+15:02:55.524 [main] INFO  org.quartz.core.QuartzScheduler - Quartz Scheduler v.2.3.2 created.
+15:02:55.526 [main] INFO  org.quartz.simpl.RAMJobStore - RAMJobStore initialized.
+15:02:55.527 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+15:02:55.529 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+15:02:55.529 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler version: 2.3.2
+15:02:55.529 [main] INFO  org.quartz.core.QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@1be59f28
+15:02:55.641 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Starting...
+15:02:55.765 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Start completed.
+15:02:57.814 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
+15:02:58.544 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED started.
+15:02:58.553 [main] INFO  com.mdd.admin.LikeAdminApplication - Started LikeAdminApplication in 5.763 seconds (JVM running for 6.294)
+15:03:12.629 [http-nio-8082-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+15:04:56.751 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+15:04:56.780 [main] INFO  com.mdd.admin.LikeAdminApplication - Starting LikeAdminApplication using Java 21.0.12 on angle with PID 3740 (G:\desktop\likeadmin_java-master\server\like-admin\target\like-admin-1.0.0.jar started by 15367 in G:\desktop\likeadmin_java-master\server\like-admin)
+15:04:56.782 [main] INFO  com.mdd.admin.LikeAdminApplication - The following 2 profiles are active: "dev", "local"
+15:04:58.322 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
+15:04:58.323 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+15:04:58.323 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.83]
+15:04:58.386 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+15:04:59.108 [main] INFO  org.quartz.impl.StdSchedulerFactory - Using default implementation for ThreadExecutor
+15:04:59.121 [main] INFO  org.quartz.core.SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+15:04:59.122 [main] INFO  org.quartz.core.QuartzScheduler - Quartz Scheduler v.2.3.2 created.
+15:04:59.122 [main] INFO  org.quartz.simpl.RAMJobStore - RAMJobStore initialized.
+15:04:59.123 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+15:04:59.123 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+15:04:59.123 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler version: 2.3.2
+15:04:59.124 [main] INFO  org.quartz.core.QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@42f9c19a
+15:04:59.219 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Starting...
+15:04:59.342 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Start completed.
+15:05:01.322 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
+15:05:02.030 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED started.
+15:05:02.040 [main] INFO  com.mdd.admin.LikeAdminApplication - Started LikeAdminApplication in 5.605 seconds (JVM running for 6.154)
+15:13:06.793 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+15:13:06.830 [main] INFO  com.mdd.admin.LikeAdminApplication - Starting LikeAdminApplication using Java 21.0.12 on angle with PID 30384 (G:\desktop\likeadmin_java-master\server\like-admin\target\like-admin-1.0.0.jar started by 15367 in G:\desktop\likeadmin_java-master\server\like-admin)
+15:13:06.832 [main] INFO  com.mdd.admin.LikeAdminApplication - The following 2 profiles are active: "dev", "local"
+15:13:08.485 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
+15:13:08.486 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+15:13:08.487 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.83]
+15:13:08.550 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+15:13:09.320 [main] INFO  org.quartz.impl.StdSchedulerFactory - Using default implementation for ThreadExecutor
+15:13:09.341 [main] INFO  org.quartz.core.SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+15:13:09.342 [main] INFO  org.quartz.core.QuartzScheduler - Quartz Scheduler v.2.3.2 created.
+15:13:09.344 [main] INFO  org.quartz.simpl.RAMJobStore - RAMJobStore initialized.
+15:13:09.346 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+15:13:09.346 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+15:13:09.346 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler version: 2.3.2
+15:13:09.347 [main] INFO  org.quartz.core.QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@27b000f7
+15:13:09.459 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Starting...
+15:13:09.585 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Start completed.
+15:13:11.815 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
+15:13:12.545 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED started.
+15:13:12.554 [main] INFO  com.mdd.admin.LikeAdminApplication - Started LikeAdminApplication in 6.081 seconds (JVM running for 6.642)
+15:14:48.963 [http-nio-8082-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+15:23:13.415 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+15:23:13.446 [main] INFO  com.mdd.admin.LikeAdminApplication - Starting LikeAdminApplication using Java 21.0.12 on angle with PID 636 (G:\desktop\likeadmin_java-master\server\like-admin\target\like-admin-1.0.0.jar started by 15367 in G:\desktop\likeadmin_java-master\server\like-admin)
+15:23:13.449 [main] INFO  com.mdd.admin.LikeAdminApplication - The following 2 profiles are active: "dev", "local"
+15:23:14.984 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
+15:23:14.985 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+15:23:14.985 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.83]
+15:23:15.049 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+15:23:15.897 [main] INFO  org.quartz.impl.StdSchedulerFactory - Using default implementation for ThreadExecutor
+15:23:15.912 [main] INFO  org.quartz.core.SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+15:23:15.912 [main] INFO  org.quartz.core.QuartzScheduler - Quartz Scheduler v.2.3.2 created.
+15:23:15.913 [main] INFO  org.quartz.simpl.RAMJobStore - RAMJobStore initialized.
+15:23:15.915 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+15:23:15.915 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+15:23:15.915 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler version: 2.3.2
+15:23:15.915 [main] INFO  org.quartz.core.QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@42f9c19a
+15:23:16.067 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Starting...
+15:23:16.279 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Start completed.
+15:23:19.063 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
+15:23:19.996 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED started.
+15:23:20.007 [main] INFO  com.mdd.admin.LikeAdminApplication - Started LikeAdminApplication in 6.896 seconds (JVM running for 7.425)
+15:23:31.996 [http-nio-8082-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+16:46:15.913 [DateSourceHikariCP housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - DateSourceHikariCP - Thread starvation or clock leap detected (housekeeper delta=59s141ms902µs500ns).
+16:50:05.322 [http-nio-8082-exec-10] ERROR com.mdd.common.exception.GlobalException - 系统异常 Could not find acceptable representation
+17:23:42.547 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+17:23:42.586 [main] INFO  com.mdd.admin.LikeAdminApplication - Starting LikeAdminApplication using Java 21.0.12 on angle with PID 28192 (G:\desktop\likeadmin_java-master\server\like-admin\target\like-admin-1.0.0.jar started by 15367 in G:\desktop\likeadmin_java-master\server\like-admin)
+17:23:42.591 [main] INFO  com.mdd.admin.LikeAdminApplication - The following 2 profiles are active: "dev", "local"
+17:23:44.318 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
+17:23:44.321 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+17:23:44.322 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.83]
+17:23:44.386 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+17:23:45.250 [main] INFO  org.quartz.impl.StdSchedulerFactory - Using default implementation for ThreadExecutor
+17:23:45.271 [main] INFO  org.quartz.core.SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+17:23:45.273 [main] INFO  org.quartz.core.QuartzScheduler - Quartz Scheduler v.2.3.2 created.
+17:23:45.274 [main] INFO  org.quartz.simpl.RAMJobStore - RAMJobStore initialized.
+17:23:45.277 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+17:23:45.278 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+17:23:45.278 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler version: 2.3.2
+17:23:45.279 [main] INFO  org.quartz.core.QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@6818d900
+17:23:45.417 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Starting...
+17:23:45.563 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Start completed.
+17:23:47.538 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
+17:23:48.455 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED started.
+17:23:48.470 [main] INFO  com.mdd.admin.LikeAdminApplication - Started LikeAdminApplication in 6.285 seconds (JVM running for 6.872)
+17:23:48.530 [http-nio-8082-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+17:23:49.204 [http-nio-8082-exec-10] ERROR com.mdd.common.exception.GlobalException - 系统异常 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+### The error may exist in com/mdd/common/mapper/nail/NailAssetMapper.java (best guess)
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT    id,name,uri,mime_type,file_size,width,height,category,style,color_family,nail_shape,craft,tags_json,original_filename,sha256,thumb200_uri,thumb600_uri,source,copyright_status,ai_usable,status,failure_reason,prompt,source_task_id,source_result_id,creator_id,is_delete,create_time,update_time,delete_time    FROM la_nail_asset           WHERE (is_delete = ? AND status = ?) ORDER BY id DESC limit 51
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+; bad SQL grammar []; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+17:23:57.887 [http-nio-8082-exec-10] ERROR com.mdd.common.exception.GlobalException - 系统异常 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+### The error may exist in com/mdd/common/mapper/nail/NailAssetMapper.java (best guess)
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT    id,name,uri,mime_type,file_size,width,height,category,style,color_family,nail_shape,craft,tags_json,original_filename,sha256,thumb200_uri,thumb600_uri,source,copyright_status,ai_usable,status,failure_reason,prompt,source_task_id,source_result_id,creator_id,is_delete,create_time,update_time,delete_time    FROM la_nail_asset           WHERE (is_delete = ? AND status = ?) ORDER BY id DESC limit 25
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+; bad SQL grammar []; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+17:24:12.509 [http-nio-8082-exec-3] ERROR com.mdd.common.exception.GlobalException - 系统异常 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+### The error may exist in com/mdd/common/mapper/nail/NailAssetMapper.java (best guess)
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT    id,name,uri,mime_type,file_size,width,height,category,style,color_family,nail_shape,craft,tags_json,original_filename,sha256,thumb200_uri,thumb600_uri,source,copyright_status,ai_usable,status,failure_reason,prompt,source_task_id,source_result_id,creator_id,is_delete,create_time,update_time,delete_time    FROM la_nail_asset           WHERE (is_delete = ? AND status = ? AND ai_usable = ?) ORDER BY id DESC limit 25
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+; bad SQL grammar []; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+17:24:13.099 [http-nio-8082-exec-4] ERROR com.mdd.common.exception.GlobalException - 系统异常 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+### The error may exist in com/mdd/common/mapper/nail/NailAssetMapper.java (best guess)
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT    id,name,uri,mime_type,file_size,width,height,category,style,color_family,nail_shape,craft,tags_json,original_filename,sha256,thumb200_uri,thumb600_uri,source,copyright_status,ai_usable,status,failure_reason,prompt,source_task_id,source_result_id,creator_id,is_delete,create_time,update_time,delete_time    FROM la_nail_asset           WHERE (is_delete = ? AND status = ? AND ai_usable = ?) ORDER BY id DESC limit 25
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+; bad SQL grammar []; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+17:24:13.512 [http-nio-8082-exec-5] ERROR com.mdd.common.exception.GlobalException - 系统异常 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+### The error may exist in com/mdd/common/mapper/nail/NailAssetMapper.java (best guess)
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT    id,name,uri,mime_type,file_size,width,height,category,style,color_family,nail_shape,craft,tags_json,original_filename,sha256,thumb200_uri,thumb600_uri,source,copyright_status,ai_usable,status,failure_reason,prompt,source_task_id,source_result_id,creator_id,is_delete,create_time,update_time,delete_time    FROM la_nail_asset           WHERE (is_delete = ? AND status = ?) ORDER BY id DESC limit 25
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+; bad SQL grammar []; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+17:24:15.033 [http-nio-8082-exec-8] ERROR com.mdd.common.exception.GlobalException - 系统异常 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+### The error may exist in com/mdd/common/mapper/nail/NailAssetMapper.java (best guess)
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT    id,name,uri,mime_type,file_size,width,height,category,style,color_family,nail_shape,craft,tags_json,original_filename,sha256,thumb200_uri,thumb600_uri,source,copyright_status,ai_usable,status,failure_reason,prompt,source_task_id,source_result_id,creator_id,is_delete,create_time,update_time,delete_time    FROM la_nail_asset           WHERE (is_delete = ? AND status = ? AND style = ?) ORDER BY id DESC limit 25
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+; bad SQL grammar []; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+17:24:48.303 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+17:24:48.333 [main] INFO  com.mdd.admin.LikeAdminApplication - Starting LikeAdminApplication using Java 21.0.12 on angle with PID 33832 (G:\desktop\likeadmin_java-master\server\like-admin\target\like-admin-1.0.0.jar started by 15367 in G:\desktop\likeadmin_java-master\server\like-admin)
+17:24:48.337 [main] INFO  com.mdd.admin.LikeAdminApplication - The following 2 profiles are active: "dev", "local"
+17:24:49.813 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
+17:24:49.814 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+17:24:49.815 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.83]
+17:24:49.863 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+17:24:50.541 [main] INFO  org.quartz.impl.StdSchedulerFactory - Using default implementation for ThreadExecutor
+17:24:50.555 [main] INFO  org.quartz.core.SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+17:24:50.555 [main] INFO  org.quartz.core.QuartzScheduler - Quartz Scheduler v.2.3.2 created.
+17:24:50.557 [main] INFO  org.quartz.simpl.RAMJobStore - RAMJobStore initialized.
+17:24:50.558 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+17:24:50.559 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+17:24:50.559 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler version: 2.3.2
+17:24:50.559 [main] INFO  org.quartz.core.QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@6818d900
+17:24:50.651 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Starting...
+17:24:50.764 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Start completed.
+17:24:52.686 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
+17:24:53.383 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED started.
+17:24:53.392 [main] INFO  com.mdd.admin.LikeAdminApplication - Started LikeAdminApplication in 5.385 seconds (JVM running for 5.912)
+17:26:46.870 [http-nio-8082-exec-2] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+17:49:38.557 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+17:49:38.582 [main] INFO  com.mdd.admin.LikeAdminApplication - Starting LikeAdminApplication using Java 21.0.12 on angle with PID 31020 (G:\desktop\likeadmin_java-master\server\like-admin\target\like-admin-1.0.0.jar started by 15367 in G:\desktop\likeadmin_java-master\server\like-admin)
+17:49:38.584 [main] INFO  com.mdd.admin.LikeAdminApplication - The following 2 profiles are active: "dev", "local"
+17:49:40.067 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
+17:49:40.068 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+17:49:40.068 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.83]
+17:49:40.120 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+17:49:40.781 [main] INFO  org.quartz.impl.StdSchedulerFactory - Using default implementation for ThreadExecutor
+17:49:40.798 [main] INFO  org.quartz.core.SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+17:49:40.799 [main] INFO  org.quartz.core.QuartzScheduler - Quartz Scheduler v.2.3.2 created.
+17:49:40.801 [main] INFO  org.quartz.simpl.RAMJobStore - RAMJobStore initialized.
+17:49:40.803 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+17:49:40.803 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+17:49:40.803 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler version: 2.3.2
+17:49:40.804 [main] INFO  org.quartz.core.QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@2ba33e2c
+17:49:40.904 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Starting...
+17:49:41.030 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Start completed.
+17:49:42.999 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
+17:49:43.689 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED started.
+17:49:43.698 [main] INFO  com.mdd.admin.LikeAdminApplication - Started LikeAdminApplication in 5.454 seconds (JVM running for 5.989)
+17:50:20.442 [http-nio-8082-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+17:50:44.171 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+17:50:44.205 [main] INFO  com.mdd.admin.LikeAdminApplication - Starting LikeAdminApplication using Java 21.0.12 on angle with PID 3632 (G:\desktop\likeadmin_java-master\server\like-admin\target\like-admin-1.0.0.jar started by 15367 in G:\desktop\likeadmin_java-master\server\like-admin)
+17:50:44.208 [main] INFO  com.mdd.admin.LikeAdminApplication - The following 2 profiles are active: "dev", "local"
+17:50:45.746 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
+17:50:45.747 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+17:50:45.747 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.83]
+17:50:45.798 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+17:50:46.423 [main] INFO  org.quartz.impl.StdSchedulerFactory - Using default implementation for ThreadExecutor
+17:50:46.438 [main] INFO  org.quartz.core.SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+17:50:46.439 [main] INFO  org.quartz.core.QuartzScheduler - Quartz Scheduler v.2.3.2 created.
+17:50:46.439 [main] INFO  org.quartz.simpl.RAMJobStore - RAMJobStore initialized.
+17:50:46.440 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+17:50:46.441 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+17:50:46.441 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler version: 2.3.2
+17:50:46.441 [main] INFO  org.quartz.core.QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@6818d900
+17:50:46.544 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Starting...
+17:50:46.672 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Start completed.
+17:50:48.677 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
+17:50:49.369 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED started.
+17:50:49.379 [main] INFO  com.mdd.admin.LikeAdminApplication - Started LikeAdminApplication in 5.514 seconds (JVM running for 6.043)
+17:50:59.124 [http-nio-8082-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+18:03:57.698 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+18:03:57.745 [main] INFO  com.mdd.admin.LikeAdminApplication - Starting LikeAdminApplication using Java 21.0.12 on angle with PID 27224 (G:\desktop\likeadmin_java-master\server\like-admin\target\like-admin-1.0.0.jar started by 15367 in G:\desktop\likeadmin_java-master\server\like-admin)
+18:03:57.748 [main] INFO  com.mdd.admin.LikeAdminApplication - The following 2 profiles are active: "dev", "local"
+18:03:59.266 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
+18:03:59.267 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+18:03:59.268 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.83]
+18:03:59.317 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+18:03:59.966 [main] INFO  org.quartz.impl.StdSchedulerFactory - Using default implementation for ThreadExecutor
+18:03:59.985 [main] INFO  org.quartz.core.SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+18:03:59.986 [main] INFO  org.quartz.core.QuartzScheduler - Quartz Scheduler v.2.3.2 created.
+18:03:59.987 [main] INFO  org.quartz.simpl.RAMJobStore - RAMJobStore initialized.
+18:03:59.987 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+18:03:59.987 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+18:03:59.987 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler version: 2.3.2
+18:03:59.988 [main] INFO  org.quartz.core.QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@2ba33e2c
+18:04:00.092 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Starting...
+18:04:00.208 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Start completed.
+18:04:02.237 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
+18:04:02.540 [http-nio-8082-exec-2] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+18:04:03.095 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED started.
+18:04:03.104 [main] INFO  com.mdd.admin.LikeAdminApplication - Started LikeAdminApplication in 5.709 seconds (JVM running for 6.254)
+18:04:42.830 [http-nio-8082-exec-1] WARN  org.apache.coyote.http11.Http11Processor - The HTTP response header [Location] with value [http://127.0.0.1:8082/nail-site/首页.html] has been removed from the response because it is invalid
+java.lang.IllegalArgumentException: The Unicode character [首] at code point [39,318] cannot be encoded as it is outside the permitted range of 0 to 255
+	at org.apache.tomcat.util.buf.MessageBytes.toBytesSimple(MessageBytes.java:310) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.tomcat.util.buf.MessageBytes.toBytes(MessageBytes.java:283) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.coyote.http11.Http11OutputBuffer.write(Http11OutputBuffer.java:389) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.coyote.http11.Http11OutputBuffer.sendHeader(Http11OutputBuffer.java:368) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.coyote.http11.Http11Processor.prepareResponse(Http11Processor.java:1048) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.coyote.AbstractProcessor.action(AbstractProcessor.java:376) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.coyote.Response.action(Response.java:209) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.coyote.Response.sendHeaders(Response.java:437) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:291) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.catalina.connector.OutputBuffer.close(OutputBuffer.java:250) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.catalina.connector.Response.finishResponse(Response.java:439) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:371) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:928) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1794) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at java.lang.Thread.run(Thread.java:1583) ~[?:?]
+18:05:07.040 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+18:05:07.073 [main] INFO  com.mdd.admin.LikeAdminApplication - Starting LikeAdminApplication using Java 21.0.12 on angle with PID 1208 (G:\desktop\likeadmin_java-master\server\like-admin\target\like-admin-1.0.0.jar started by 15367 in G:\desktop\likeadmin_java-master\server\like-admin)
+18:05:07.075 [main] INFO  com.mdd.admin.LikeAdminApplication - The following 2 profiles are active: "dev", "local"
+18:05:08.510 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
+18:05:08.510 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+18:05:08.511 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.83]
+18:05:08.559 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+18:05:09.226 [main] INFO  org.quartz.impl.StdSchedulerFactory - Using default implementation for ThreadExecutor
+18:05:09.242 [main] INFO  org.quartz.core.SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+18:05:09.242 [main] INFO  org.quartz.core.QuartzScheduler - Quartz Scheduler v.2.3.2 created.
+18:05:09.243 [main] INFO  org.quartz.simpl.RAMJobStore - RAMJobStore initialized.
+18:05:09.244 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+18:05:09.244 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+18:05:09.245 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler version: 2.3.2
+18:05:09.245 [main] INFO  org.quartz.core.QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@2ba33e2c
+18:05:09.371 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Starting...
+18:05:09.488 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Start completed.
+18:05:11.412 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
+18:05:12.041 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED started.
+18:05:12.049 [main] INFO  com.mdd.admin.LikeAdminApplication - Started LikeAdminApplication in 5.293 seconds (JVM running for 5.798)
+18:05:24.627 [http-nio-8082-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+18:05:24.647 [http-nio-8082-exec-1] WARN  org.apache.coyote.http11.Http11Processor - The HTTP response header [Location] with value [http://127.0.0.1:8082/nail-site/首页.html] has been removed from the response because it is invalid
+java.lang.IllegalArgumentException: The Unicode character [首] at code point [39,318] cannot be encoded as it is outside the permitted range of 0 to 255
+	at org.apache.tomcat.util.buf.MessageBytes.toBytesSimple(MessageBytes.java:310) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.tomcat.util.buf.MessageBytes.toBytes(MessageBytes.java:283) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.coyote.http11.Http11OutputBuffer.write(Http11OutputBuffer.java:389) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.coyote.http11.Http11OutputBuffer.sendHeader(Http11OutputBuffer.java:368) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.coyote.http11.Http11Processor.prepareResponse(Http11Processor.java:1048) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.coyote.AbstractProcessor.action(AbstractProcessor.java:376) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.coyote.Response.action(Response.java:209) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.coyote.Response.sendHeaders(Response.java:437) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:291) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.catalina.connector.OutputBuffer.close(OutputBuffer.java:250) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.catalina.connector.Response.finishResponse(Response.java:439) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:371) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:928) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1794) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at java.lang.Thread.run(Thread.java:1583) ~[?:?]

@@ -1,0 +1,12 @@
+19:21:02.115 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+19:21:02.148 [main] INFO  com.mdd.front.LikeFrontApplication - Starting LikeFrontApplication using Java 21.0.6 on angle with PID 29344 (C:\Users\15367\Desktop\likeadmin_java-master\server\like-front\target\like-front-1.0.0.jar started by 15367 in C:\Users\15367\Desktop\likeadmin_java-master\server\like-front)
+19:21:02.152 [main] INFO  com.mdd.front.LikeFrontApplication - The following 2 profiles are active: "dev", "local"
+19:21:03.601 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8084"]
+19:21:03.602 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+19:21:03.602 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.83]
+19:21:03.678 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+19:21:04.552 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Starting...
+19:21:04.728 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Start completed.
+19:21:06.621 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8084"]
+19:21:07.059 [main] INFO  com.mdd.front.LikeFrontApplication - Started LikeFrontApplication in 5.284 seconds (JVM running for 5.886)
+19:21:32.554 [http-nio-8084-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'

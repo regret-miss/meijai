@@ -1,0 +1,96 @@
+16:46:15.913 [DateSourceHikariCP housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - DateSourceHikariCP - Thread starvation or clock leap detected (housekeeper delta=59s141ms902µs500ns).
+16:50:05.322 [http-nio-8082-exec-10] ERROR com.mdd.common.exception.GlobalException - 系统异常 Could not find acceptable representation
+17:23:49.204 [http-nio-8082-exec-10] ERROR com.mdd.common.exception.GlobalException - 系统异常 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+### The error may exist in com/mdd/common/mapper/nail/NailAssetMapper.java (best guess)
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT    id,name,uri,mime_type,file_size,width,height,category,style,color_family,nail_shape,craft,tags_json,original_filename,sha256,thumb200_uri,thumb600_uri,source,copyright_status,ai_usable,status,failure_reason,prompt,source_task_id,source_result_id,creator_id,is_delete,create_time,update_time,delete_time    FROM la_nail_asset           WHERE (is_delete = ? AND status = ?) ORDER BY id DESC limit 51
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+; bad SQL grammar []; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+17:23:57.887 [http-nio-8082-exec-10] ERROR com.mdd.common.exception.GlobalException - 系统异常 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+### The error may exist in com/mdd/common/mapper/nail/NailAssetMapper.java (best guess)
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT    id,name,uri,mime_type,file_size,width,height,category,style,color_family,nail_shape,craft,tags_json,original_filename,sha256,thumb200_uri,thumb600_uri,source,copyright_status,ai_usable,status,failure_reason,prompt,source_task_id,source_result_id,creator_id,is_delete,create_time,update_time,delete_time    FROM la_nail_asset           WHERE (is_delete = ? AND status = ?) ORDER BY id DESC limit 25
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+; bad SQL grammar []; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+17:24:12.509 [http-nio-8082-exec-3] ERROR com.mdd.common.exception.GlobalException - 系统异常 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+### The error may exist in com/mdd/common/mapper/nail/NailAssetMapper.java (best guess)
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT    id,name,uri,mime_type,file_size,width,height,category,style,color_family,nail_shape,craft,tags_json,original_filename,sha256,thumb200_uri,thumb600_uri,source,copyright_status,ai_usable,status,failure_reason,prompt,source_task_id,source_result_id,creator_id,is_delete,create_time,update_time,delete_time    FROM la_nail_asset           WHERE (is_delete = ? AND status = ? AND ai_usable = ?) ORDER BY id DESC limit 25
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+; bad SQL grammar []; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+17:24:13.099 [http-nio-8082-exec-4] ERROR com.mdd.common.exception.GlobalException - 系统异常 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+### The error may exist in com/mdd/common/mapper/nail/NailAssetMapper.java (best guess)
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT    id,name,uri,mime_type,file_size,width,height,category,style,color_family,nail_shape,craft,tags_json,original_filename,sha256,thumb200_uri,thumb600_uri,source,copyright_status,ai_usable,status,failure_reason,prompt,source_task_id,source_result_id,creator_id,is_delete,create_time,update_time,delete_time    FROM la_nail_asset           WHERE (is_delete = ? AND status = ? AND ai_usable = ?) ORDER BY id DESC limit 25
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+; bad SQL grammar []; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+17:24:13.512 [http-nio-8082-exec-5] ERROR com.mdd.common.exception.GlobalException - 系统异常 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+### The error may exist in com/mdd/common/mapper/nail/NailAssetMapper.java (best guess)
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT    id,name,uri,mime_type,file_size,width,height,category,style,color_family,nail_shape,craft,tags_json,original_filename,sha256,thumb200_uri,thumb600_uri,source,copyright_status,ai_usable,status,failure_reason,prompt,source_task_id,source_result_id,creator_id,is_delete,create_time,update_time,delete_time    FROM la_nail_asset           WHERE (is_delete = ? AND status = ?) ORDER BY id DESC limit 25
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+; bad SQL grammar []; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+17:24:15.033 [http-nio-8082-exec-8] ERROR com.mdd.common.exception.GlobalException - 系统异常 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+### The error may exist in com/mdd/common/mapper/nail/NailAssetMapper.java (best guess)
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT    id,name,uri,mime_type,file_size,width,height,category,style,color_family,nail_shape,craft,tags_json,original_filename,sha256,thumb200_uri,thumb600_uri,source,copyright_status,ai_usable,status,failure_reason,prompt,source_task_id,source_result_id,creator_id,is_delete,create_time,update_time,delete_time    FROM la_nail_asset           WHERE (is_delete = ? AND status = ? AND style = ?) ORDER BY id DESC limit 25
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+; bad SQL grammar []; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+18:04:42.830 [http-nio-8082-exec-1] WARN  org.apache.coyote.http11.Http11Processor - The HTTP response header [Location] with value [http://127.0.0.1:8082/nail-site/首页.html] has been removed from the response because it is invalid
+java.lang.IllegalArgumentException: The Unicode character [首] at code point [39,318] cannot be encoded as it is outside the permitted range of 0 to 255
+	at org.apache.tomcat.util.buf.MessageBytes.toBytesSimple(MessageBytes.java:310) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.tomcat.util.buf.MessageBytes.toBytes(MessageBytes.java:283) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.coyote.http11.Http11OutputBuffer.write(Http11OutputBuffer.java:389) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.coyote.http11.Http11OutputBuffer.sendHeader(Http11OutputBuffer.java:368) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.coyote.http11.Http11Processor.prepareResponse(Http11Processor.java:1048) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.coyote.AbstractProcessor.action(AbstractProcessor.java:376) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.coyote.Response.action(Response.java:209) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.coyote.Response.sendHeaders(Response.java:437) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:291) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.catalina.connector.OutputBuffer.close(OutputBuffer.java:250) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.catalina.connector.Response.finishResponse(Response.java:439) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:371) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:928) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1794) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at java.lang.Thread.run(Thread.java:1583) ~[?:?]
+18:05:24.647 [http-nio-8082-exec-1] WARN  org.apache.coyote.http11.Http11Processor - The HTTP response header [Location] with value [http://127.0.0.1:8082/nail-site/首页.html] has been removed from the response because it is invalid
+java.lang.IllegalArgumentException: The Unicode character [首] at code point [39,318] cannot be encoded as it is outside the permitted range of 0 to 255
+	at org.apache.tomcat.util.buf.MessageBytes.toBytesSimple(MessageBytes.java:310) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.tomcat.util.buf.MessageBytes.toBytes(MessageBytes.java:283) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.coyote.http11.Http11OutputBuffer.write(Http11OutputBuffer.java:389) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.coyote.http11.Http11OutputBuffer.sendHeader(Http11OutputBuffer.java:368) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.coyote.http11.Http11Processor.prepareResponse(Http11Processor.java:1048) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.coyote.AbstractProcessor.action(AbstractProcessor.java:376) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.coyote.Response.action(Response.java:209) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.coyote.Response.sendHeaders(Response.java:437) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:291) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.catalina.connector.OutputBuffer.close(OutputBuffer.java:250) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.catalina.connector.Response.finishResponse(Response.java:439) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:371) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:928) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1794) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.83.jar!/:?]
+	at java.lang.Thread.run(Thread.java:1583) ~[?:?]

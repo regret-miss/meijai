@@ -1,0 +1,44 @@
+Spring Boot Version: 2.7.18
+///////////////////////////////////////////////////////
+//   _     _ _        _       _           _          //
+//  | |   (_) | __   / \   __| |_ __ ___ (_)_ __     //
+//  | |   | | |/ /  / _ \ / _` | '_ ` _ \| | '_ \    //
+//  | |___| |   <  / ___ \ (_| | | | | | | | | | |   //
+//  |_____|_|_|\_\/_/   \_\__,_|_| |_| |_|_|_| |_|   //
+//   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^    //
+//       佛祖保佑       永不宕机      永无BUG         //
+//////////////////////////////////////////////////////
+14:22:03.079 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+14:22:03.112 [main] INFO  com.mdd.admin.LikeAdminApplication - Starting LikeAdminApplication using Java 21.0.12 on angle with PID 31460 (G:\desktop\likeadmin_java-master\server\like-admin\target\like-admin-1.0.0.jar started by 15367 in G:\desktop\likeadmin_java-master\server\like-admin)
+14:22:03.114 [main] INFO  com.mdd.admin.LikeAdminApplication - The following 2 profiles are active: "dev", "local"
+14:22:04.549 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8082 (http)
+14:22:04.561 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
+14:22:04.561 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+14:22:04.562 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.83]
+14:22:04.619 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+14:22:04.619 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1475 ms
+14:22:05.201 [main] INFO  org.quartz.impl.StdSchedulerFactory - Using default implementation for ThreadExecutor
+14:22:05.213 [main] INFO  org.quartz.core.SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+14:22:05.213 [main] INFO  org.quartz.core.QuartzScheduler - Quartz Scheduler v.2.3.2 created.
+14:22:05.214 [main] INFO  org.quartz.simpl.RAMJobStore - RAMJobStore initialized.
+14:22:05.215 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+14:22:05.215 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+14:22:05.215 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler version: 2.3.2
+14:22:05.216 [main] INFO  org.quartz.core.QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@377008df
+14:22:05.306 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Starting...
+14:22:05.439 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Start completed.
+14:22:07.266 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
+14:22:07.279 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8082 (http) with context path ''
+14:22:07.914 [main] INFO  org.springframework.scheduling.quartz.SchedulerFactoryBean - Starting Quartz Scheduler now
+14:22:07.915 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED started.
+14:22:07.924 [main] INFO  com.mdd.admin.LikeAdminApplication - Started LikeAdminApplication in 5.128 seconds (JVM running for 5.62)
+14:22:19.152 [http-nio-8082-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+14:22:19.153 [http-nio-8082-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+14:22:19.155 [http-nio-8082-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 2 ms

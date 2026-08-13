@@ -1,0 +1,24 @@
+body {
+    @apply text-base text-tx-primary overflow-hidden min-w-[375px];
+    background: #f4f1ee;
+    font-family: "Noto Sans SC", "Microsoft YaHei", system-ui, sans-serif;
+}
+
+::selection { background: #a66d78; color: #fff; }
+* { scrollbar-color: #cfc5bf transparent; scrollbar-width: thin; }
+button, a, input, textarea, [tabindex] { caret-color: #9d6874; }
+.form-tips {
+    @apply text-tx-secondary text-xs leading-6 mt-1;
+}
+
+.clearfix:after {
+    content: '';
+    display: block;
+    clear: both;
+    visibility: hidden;
+}
+
+/* NProgress */
+#nprogress .bar {
+    @apply bg-primary #{!important};
+}

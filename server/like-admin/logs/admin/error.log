@@ -1,0 +1,49 @@
+16:50:05.322 [http-nio-8082-exec-10] ERROR com.mdd.common.exception.GlobalException - 系统异常 Could not find acceptable representation
+17:23:49.204 [http-nio-8082-exec-10] ERROR com.mdd.common.exception.GlobalException - 系统异常 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+### The error may exist in com/mdd/common/mapper/nail/NailAssetMapper.java (best guess)
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT    id,name,uri,mime_type,file_size,width,height,category,style,color_family,nail_shape,craft,tags_json,original_filename,sha256,thumb200_uri,thumb600_uri,source,copyright_status,ai_usable,status,failure_reason,prompt,source_task_id,source_result_id,creator_id,is_delete,create_time,update_time,delete_time    FROM la_nail_asset           WHERE (is_delete = ? AND status = ?) ORDER BY id DESC limit 51
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+; bad SQL grammar []; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+17:23:57.887 [http-nio-8082-exec-10] ERROR com.mdd.common.exception.GlobalException - 系统异常 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+### The error may exist in com/mdd/common/mapper/nail/NailAssetMapper.java (best guess)
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT    id,name,uri,mime_type,file_size,width,height,category,style,color_family,nail_shape,craft,tags_json,original_filename,sha256,thumb200_uri,thumb600_uri,source,copyright_status,ai_usable,status,failure_reason,prompt,source_task_id,source_result_id,creator_id,is_delete,create_time,update_time,delete_time    FROM la_nail_asset           WHERE (is_delete = ? AND status = ?) ORDER BY id DESC limit 25
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+; bad SQL grammar []; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+17:24:12.509 [http-nio-8082-exec-3] ERROR com.mdd.common.exception.GlobalException - 系统异常 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+### The error may exist in com/mdd/common/mapper/nail/NailAssetMapper.java (best guess)
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT    id,name,uri,mime_type,file_size,width,height,category,style,color_family,nail_shape,craft,tags_json,original_filename,sha256,thumb200_uri,thumb600_uri,source,copyright_status,ai_usable,status,failure_reason,prompt,source_task_id,source_result_id,creator_id,is_delete,create_time,update_time,delete_time    FROM la_nail_asset           WHERE (is_delete = ? AND status = ? AND ai_usable = ?) ORDER BY id DESC limit 25
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+; bad SQL grammar []; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+17:24:13.099 [http-nio-8082-exec-4] ERROR com.mdd.common.exception.GlobalException - 系统异常 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+### The error may exist in com/mdd/common/mapper/nail/NailAssetMapper.java (best guess)
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT    id,name,uri,mime_type,file_size,width,height,category,style,color_family,nail_shape,craft,tags_json,original_filename,sha256,thumb200_uri,thumb600_uri,source,copyright_status,ai_usable,status,failure_reason,prompt,source_task_id,source_result_id,creator_id,is_delete,create_time,update_time,delete_time    FROM la_nail_asset           WHERE (is_delete = ? AND status = ? AND ai_usable = ?) ORDER BY id DESC limit 25
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+; bad SQL grammar []; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+17:24:13.512 [http-nio-8082-exec-5] ERROR com.mdd.common.exception.GlobalException - 系统异常 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+### The error may exist in com/mdd/common/mapper/nail/NailAssetMapper.java (best guess)
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT    id,name,uri,mime_type,file_size,width,height,category,style,color_family,nail_shape,craft,tags_json,original_filename,sha256,thumb200_uri,thumb600_uri,source,copyright_status,ai_usable,status,failure_reason,prompt,source_task_id,source_result_id,creator_id,is_delete,create_time,update_time,delete_time    FROM la_nail_asset           WHERE (is_delete = ? AND status = ?) ORDER BY id DESC limit 25
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+; bad SQL grammar []; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+17:24:15.033 [http-nio-8082-exec-8] ERROR com.mdd.common.exception.GlobalException - 系统异常 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+### The error may exist in com/mdd/common/mapper/nail/NailAssetMapper.java (best guess)
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT    id,name,uri,mime_type,file_size,width,height,category,style,color_family,nail_shape,craft,tags_json,original_filename,sha256,thumb200_uri,thumb600_uri,source,copyright_status,ai_usable,status,failure_reason,prompt,source_task_id,source_result_id,creator_id,is_delete,create_time,update_time,delete_time    FROM la_nail_asset           WHERE (is_delete = ? AND status = ? AND style = ?) ORDER BY id DESC limit 25
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'
+; bad SQL grammar []; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'thumb200_uri' in 'field list'

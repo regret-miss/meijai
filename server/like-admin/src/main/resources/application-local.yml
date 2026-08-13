@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/meijia?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: ${DB_PASSWORD:123456}
+
+like:
+  upload-directory: ./public/uploads/
+  # 本地运行时由同一个后端同时发布前台站点与管理后台；可用 LIKEADMIN_WEB_DIRECTORY 覆盖
+  web-directory: ${LIKEADMIN_WEB_DIRECTORY:G:/desktop/likeadmin_java-master/public/}
+  captcha:
+    status: true
+
+nail:
+  ai:
+    public-enabled: ${NAIL_AI_PUBLIC_ENABLED:true}
