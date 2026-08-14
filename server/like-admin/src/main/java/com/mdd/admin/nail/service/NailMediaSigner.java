@@ -48,6 +48,10 @@ public class NailMediaSigner {
         return signedUrl("result", id, "original", download);
     }
 
+    public String styleUrl(Integer id, String variant, boolean download) {
+        return signedUrl("style", id.longValue(), variant, download);
+    }
+
     public void verify(String type, long id, String variant, boolean download, long expires, String signature) {
         if (expires < System.currentTimeMillis() / 1000L) throw new OperateException("图片访问地址已过期，请刷新页面");
         if (expires > System.currentTimeMillis() / 1000L + URL_TTL_SECONDS + 30L) throw new OperateException("图片访问地址无效");

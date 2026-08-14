@@ -30,22 +30,32 @@ public class NailGenerateRequest {
 
     private Integer referenceAssetId;
 
+    private Long referenceResultId;
+
+    private Integer styleReferenceId;
+
+    @Size(max = 120, message = "模型标识不能超过120个字符")
+    private String model;
+
+    @Min(value = 1, message = "随机种子必须为正整数")
+    private Long seed;
+
     @Pattern(regexp = "DESIGN_BOARD|ON_HAND", message = "不支持的呈现方式")
     private String creativeMode = "ON_HAND";
 
-    @Pattern(regexp = "SHORT_ALMOND|SHORT_SQUOVAL|ALMOND|SQUARE|COFFIN", message = "不支持的甲型")
+    @Pattern(regexp = "SHORT_ALMOND|SHORT_SQUOVAL|ALMOND|SQUARE|COFFIN|ROUND|STILETTO|LIPSTICK", message = "不支持的甲型")
     private String nailShape = "SHORT_ALMOND";
 
-    @Pattern(regexp = "VELVET_CAT_EYE|JELLY|CHROME|MICRO_FRENCH|AURA|SCULPTED_GEL|GLOSSY_GEL", message = "不支持的材质工艺")
+    @Pattern(regexp = "VELVET_CAT_EYE|JELLY|CHROME|MICRO_FRENCH|AURA|SCULPTED_GEL|GLOSSY_GEL|FRENCH_TIP|MILK_BATH|OMBRE|GLITTER|PEARL", message = "不支持的材质工艺")
     private String finish = "VELVET_CAT_EYE";
 
-    @Pattern(regexp = "QUIET_LUXURY|KOREAN_CLEAR|RUNWAY|FUTURISTIC|ROMANTIC|SWEET_COOL", message = "不支持的设计风格")
+    @Pattern(regexp = "QUIET_LUXURY|KOREAN_CLEAR|RUNWAY|FUTURISTIC|ROMANTIC|SWEET_COOL|MINIMALIST|Y2K|COQUETTE|OLD_MONEY|DOPAMINE|MORANDI", message = "不支持的设计风格")
     private String designStyle = "QUIET_LUXURY";
 
     @Pattern(regexp = "UNIFIED|TWO_ACCENTS|MICRO_FRENCH_LAYOUT|MISMATCHED", message = "不支持的甲面排版")
     private String layoutStyle = "TWO_ACCENTS";
 
-    @Pattern(regexp = "ROSE_VELVET|SEA_GLASS|BUTTER_MICRO_FRENCH|MIXED_METAL|AURORA_MAGNETIC|KOREAN_SYRUP|CUSTOM", message = "不支持的趋势预设")
+    @Pattern(regexp = "ROSE_VELVET|SEA_GLASS|BUTTER_MICRO_FRENCH|MIXED_METAL|AURORA_MAGNETIC|KOREAN_SYRUP|JADE_CAT_EYE|MINT_FRENCH|LACE_NAILS|REVERSE_FRENCH|LEOPARD_PRINT|METALLIC_FRENCH|MILKY_WHITE|SUNSET_OMBRE|CUSTOM", message = "不支持的趋势预设")
     private String trendPreset = "ROSE_VELVET";
 
     @Pattern(regexp = "REINTERPRET|KEEP_PALETTE|KEEP_LAYOUT|KEEP_TEXTURE", message = "不支持的参考图改款方式")

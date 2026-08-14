@@ -20,6 +20,8 @@ public class NailAiTask {
     private String resolution;
     private Integer outputCount;
     private Integer referenceAssetId;
+    private Long referenceResultId;
+    private Integer styleReferenceId;
     private String creativeMode;
     private String nailShape;
     private String finish;
@@ -29,6 +31,7 @@ public class NailAiTask {
     private String referenceStrategy;
     private String colorPalette;
     private String templateVersion;
+    private Long seed;
     private String errorMessage;
     private Integer creatorId;
     private String publicToken;

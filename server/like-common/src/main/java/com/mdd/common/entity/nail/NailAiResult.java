@@ -19,5 +19,6 @@ public class NailAiResult {
     private Long reviewTime;
     private Integer adoptedAssetId;
     private Integer sort;
+    private Double score;
     private Long createTime;
 }

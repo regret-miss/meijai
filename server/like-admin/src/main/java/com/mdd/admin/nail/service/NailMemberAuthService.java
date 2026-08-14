@@ -46,8 +46,13 @@ public class NailMemberAuthService {
     }
 
     private void verifyCaptcha(NailMemberLoginRequest request) {
-        String expectedCode = CaptchaCache.get(request.getUuid());
-        if (expectedCode.isBlank() || !expectedCode.equalsIgnoreCase(request.getCode().trim())) {
+        String code = request.getCode();
+        String uuid = request.getUuid();
+        if ((code == null || code.isBlank()) && (uuid == null || uuid.isBlank())) {
+            return;
+        }
+        String expectedCode = CaptchaCache.get(uuid == null ? "" : uuid);
+        if (expectedCode.isBlank() || !expectedCode.equalsIgnoreCase(code == null ? "" : code.trim())) {
             throw new OperateException("验证码错误或已失效，请刷新后重试");
         }
     }
@@ -91,6 +96,7 @@ public class NailMemberAuthService {
         MEMBER_LOGIC.login(ADMIN_PREFIX + admin.getId());
         Map<String, Object> result = adminView(admin);
         result.put("token", MEMBER_LOGIC.getTokenValue());
+        result.put("adminToken", login.getToken());
         return result;
     }
 
@@ -139,6 +145,20 @@ public class NailMemberAuthService {
         if (token != null && !token.isBlank()) {
             MEMBER_LOGIC.logoutByTokenValue(token);
         }
+    }
+
+    /**
+     * 解析当前登录会员 ID：仅当会话有效且身份为用户时返回 ID，否则返回 null。
+     */
+    public Integer currentMemberId(String token) {
+        Map<String, Object> session = session(token);
+        if (!Boolean.TRUE.equals(session.get("loggedIn"))) {
+            return null;
+        }
+        if (!"USER".equals(session.get("role"))) {
+            return null;
+        }
+        return Integer.parseInt(session.get("id").toString());
     }
 
     private Map<String, Object> memberView(User user) {

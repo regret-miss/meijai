@@ -27,7 +27,7 @@ public class NailAssetUpdateRequest {
     private String category;
 
     @NotBlank(message = "请选择设计风格")
-    @Pattern(regexp = "QUIET_LUXURY|KOREAN_CLEAR|RUNWAY|FUTURISTIC|ROMANTIC|SWEET_COOL", message = "不支持的设计风格")
+    @Pattern(regexp = "QUIET_LUXURY|KOREAN_CLEAR|RUNWAY|FUTURISTIC|ROMANTIC|SWEET_COOL|MINIMALIST|Y2K|COQUETTE|OLD_MONEY|DOPAMINE|MORANDI", message = "不支持的设计风格")
     private String style;
 
     @NotBlank(message = "请选择色系")
@@ -35,11 +35,11 @@ public class NailAssetUpdateRequest {
     private String colorFamily;
 
     @NotBlank(message = "请选择甲形")
-    @Pattern(regexp = "SHORT_ALMOND|SHORT_SQUOVAL|ALMOND|SQUARE|COFFIN", message = "不支持的甲形")
+    @Pattern(regexp = "SHORT_ALMOND|SHORT_SQUOVAL|ALMOND|SQUARE|COFFIN|ROUND|STILETTO|LIPSTICK", message = "不支持的甲形")
     private String nailShape;
 
     @NotBlank(message = "请选择工艺")
-    @Pattern(regexp = "VELVET_CAT_EYE|JELLY|CHROME|MICRO_FRENCH|AURA|SCULPTED_GEL|GLOSSY_GEL", message = "不支持的美甲工艺")
+    @Pattern(regexp = "VELVET_CAT_EYE|JELLY|CHROME|MICRO_FRENCH|AURA|SCULPTED_GEL|GLOSSY_GEL|FRENCH_TIP|MILK_BATH|OMBRE|GLITTER|PEARL", message = "不支持的美甲工艺")
     private String craft;
 
     @Size(max = 500, message = "标签内容不能超过500个字符")

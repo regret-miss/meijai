@@ -25,7 +25,9 @@
                             <button type="button" @click="router.push('/nail/ai')"><icon name="el-icon-ArrowLeft" /> 返回创作台</button>
                             <div class="title-line">
                                 <div><span>DESIGN ARCHIVE · {{ task.id }}</span><h1>{{ task.title }}</h1></div>
+                                <button v-if="task.seed" class="rename-button" type="button" aria-label="同参数再生成（固定随机种子）" title="同参数再生成（固定随机种子）" @click="replayWithSameSeed"><icon name="el-icon-RefreshRight" /></button>
                                 <button class="rename-button" type="button" aria-label="重命名设计记录" @click="openRename"><icon name="el-icon-EditPen" /></button>
+                                <button class="rename-button delete-button" type="button" aria-label="删除设计记录" @click="removeTask"><icon name="el-icon-Delete" /></button>
                             </div>
                             <div class="meta-row">
                                 <span>{{ creativeModeLabel(task.creativeMode) }}</span>
@@ -69,14 +71,16 @@
                             <div><b>正在研色与模拟材质</b><p>生成通常需要几十秒，离开页面不会中断任务。</p></div>
                         </div>
                         <div v-else-if="task.results.length" :class="['result-grid', { single: task.results.length === 1 }]">
-                            <article v-for="result in task.results" :key="result.id" class="result-card">
+                            <article v-for="result in sortedResults" :key="result.id" class="result-card">
                                 <el-image :src="result.url" :preview-src-list="task.results.map((item) => item.url)" fit="cover" preview-teleported />
                                 <footer>
-                                    <div><span>方案 {{ result.sort + 1 }}</span><small>{{ result.width }} × {{ result.height }} · {{ reviewLabel(result.reviewStatus) }}</small></div>
+                                    <div><span>方案 {{ result.sort + 1 }}</span><small>{{ result.width }} × {{ result.height }} · {{ reviewLabel(result.reviewStatus) }}<template v-if="result.score"> · 美学 {{ result.score }}</template></small></div>
                                     <div class="result-actions">
                                         <el-button v-if="result.reviewStatus !== 'ADOPTED'" link @click="openReject(result)">驳回</el-button>
+                                        <el-button :type="baseResult?.id === result.id ? 'success' : 'default'" plain link @click="setBase(result)">{{ baseResult?.id === result.id ? '已选为底' : '以此为底' }}</el-button>
                                         <el-button v-if="result.reviewStatus !== 'ADOPTED'" type="primary" plain @click="adopt(result)">采纳到资产库</el-button>
                                         <router-link v-else to="/nail/assets"><el-button type="success" plain>已形成资产</el-button></router-link>
+                                        <el-button link type="danger" @click="removeResult(result)">删除</el-button>
                                     </div>
                                 </footer>
                                 <p v-if="result.reviewNote" class="review-note">审阅：{{ result.reviewNote }}</p>
@@ -96,6 +100,7 @@
                             <span>{{ submitting ? '创建中' : '再次生成' }}</span><icon name="el-icon-Top" />
                         </button>
                     </section>
+                    <div v-if="baseResult" class="base-hint">以「方案 {{ baseResult.sort + 1 }}」为底图继续创作 <button type="button" @click="baseResult = undefined">取消</button></div>
                 </template>
 
                 <div v-else-if="!detailLoading" class="missing-state"><icon name="el-icon-DocumentDelete" /><h2>设计记录不存在</h2><el-button type="primary" @click="router.push('/nail/ai')">返回创作台</el-button></div>
@@ -114,13 +119,15 @@
 </template>
 
 <script lang="ts" setup name="nailAiDetail">
-import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import TaskRail from './components/TaskRail.vue'
 import {
     nailResultAdopt,
+    nailResultDelete,
     nailResultReject,
     nailTaskCreate,
+    nailTaskDelete,
     nailTaskDetail,
     nailTaskList,
     nailTaskRename,
@@ -147,6 +154,7 @@ const rejectingResult = ref<NailResult>()
 let pollTimer: number | undefined
 
 const isPending = (status: string) => ['QUEUED', 'RUNNING'].includes(status)
+const sortedResults = computed(() => [...(task.value?.results || [])].sort((a, b) => (b.score || 0) - (a.score || 0)))
 const statusClass = (status: string) => status.toLowerCase().replace('_', '-')
 const hideBrokenPreview = (event: Event) => {
     const image = event.target as HTMLImageElement
@@ -162,9 +170,9 @@ const formatTaskDate = (value: string) => {
 const referenceStrategyLabel = (value: string) => ({ REINTERPRET: '提取设计语言', KEEP_PALETTE: '保留配色', KEEP_LAYOUT: '保留布局', KEEP_TEXTURE: '保留材质' } as Record<string, string>)[value] || value
 const specLabel = (group: string, value: string) => {
     const labels: Record<string, Record<string, string>> = {
-        shape: { SHORT_ALMOND: '短杏仁', SHORT_SQUOVAL: '短方圆', ALMOND: '杏仁', SQUARE: '方形', COFFIN: '芭蕾' },
-        finish: { VELVET_CAT_EYE: '丝绒猫眼', JELLY: '果冻透色', CHROME: '镜面铬光', MICRO_FRENCH: '微法式', AURA: '晕染光圈', SCULPTED_GEL: '立体凝胶', GLOSSY_GEL: '高亮凝胶' },
-        style: { QUIET_LUXURY: '克制高级', KOREAN_CLEAR: '韩系清透', RUNWAY: '秀场前卫', FUTURISTIC: '未来机能', ROMANTIC: '细腻浪漫', SWEET_COOL: '甜酷混搭' }
+        shape: { SHORT_ALMOND: '短杏仁', SHORT_SQUOVAL: '短方圆', ALMOND: '杏仁', SQUARE: '方形', COFFIN: '芭蕾', ROUND: '圆形', STILETTO: '尖形', LIPSTICK: '唇形' },
+        finish: { VELVET_CAT_EYE: '丝绒猫眼', JELLY: '果冻透色', CHROME: '镜面铬光', MICRO_FRENCH: '微法式', AURA: '晕染光圈', SCULPTED_GEL: '立体凝胶', GLOSSY_GEL: '高亮凝胶', FRENCH_TIP: '经典法式', MILK_BATH: '牛奶浴', OMBRE: '渐变', GLITTER: '满钻闪粉', PEARL: '珍珠' },
+        style: { QUIET_LUXURY: '克制高级', KOREAN_CLEAR: '韩系清透', RUNWAY: '秀场前卫', FUTURISTIC: '未来机能', ROMANTIC: '细腻浪漫', SWEET_COOL: '甜酷混搭', MINIMALIST: '极简主义', Y2K: '千禧复古', COQUETTE: '甜心蝴蝶结', OLD_MONEY: '老钱风', DOPAMINE: '多巴胺', MORANDI: '莫兰迪' }
     }
     return labels[group]?.[value] || value
 }
@@ -201,6 +209,19 @@ const saveRename = async () => {
     await Promise.all([loadDetail(true), loadTasks()])
 }
 const adopt = async (result: NailResult) => { await nailResultAdopt({ id: result.id }); feedback.msgSuccess('已采纳为正式资产'); await Promise.all([loadDetail(true), loadTasks()]) }
+const removeResult = async (result: NailResult) => {
+    await feedback.confirm('确定删除该生成方案？若已采纳，对应资产也会同步回收。')
+    await nailResultDelete({ id: result.id })
+    feedback.msgSuccess('生成方案已删除')
+    await Promise.all([loadDetail(true), loadTasks()])
+}
+const removeTask = async () => {
+    if (!task.value) return
+    await feedback.confirm(`确定删除设计记录「${task.value.title}」？其生成结果与已采纳资产将一并回收。`)
+    await nailTaskDelete({ id: task.value.id })
+    feedback.msgSuccess('设计记录已删除')
+    await router.push('/nail/ai')
+}
 const openReject = (result: NailResult) => { rejectingResult.value = result; rejectNote.value = result.reviewNote || ''; rejectOpen.value = true }
 const confirmReject = async () => {
     if (!rejectingResult.value) return
@@ -209,22 +230,50 @@ const confirmReject = async () => {
     feedback.msgSuccess('结果已驳回')
     await loadDetail(true)
 }
+const baseResult = ref<NailResult>()
+const setBase = (result: NailResult) => {
+    baseResult.value = baseResult.value?.id === result.id ? undefined : result
+    const composer = document.querySelector('.iteration-composer')
+    composer?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+}
 const iterate = async () => {
     if (!task.value || iterationPrompt.value.trim().length < 2) return
     submitting.value = true
     const spec = task.value.designSpec
+    const baseId = baseResult.value?.id ?? task.value.referenceResultId
     const payload: NailGeneratePayload = {
-        taskType: task.value.referenceAssetId ? 'IMAGE_TO_IMAGE' : 'TEXT_TO_IMAGE',
+        taskType: task.value.referenceAssetId || baseId ? 'IMAGE_TO_IMAGE' : 'TEXT_TO_IMAGE',
         prompt: iterationPrompt.value.trim(), creativeMode: spec.creativeMode, nailShape: spec.nailShape,
         finish: spec.finish, designStyle: spec.designStyle, layoutStyle: spec.layoutStyle,
         trendPreset: spec.trendPreset, referenceStrategy: spec.referenceStrategy, colorPalette: spec.colorPalette,
         aspectRatio: task.value.aspectRatio as NailGeneratePayload['aspectRatio'],
         resolution: task.value.resolution as NailGeneratePayload['resolution'], outputCount: task.value.outputCount,
-        referenceAssetId: task.value.referenceAssetId
+        referenceAssetId: task.value.referenceAssetId,
+        referenceResultId: baseId
     }
     try {
         const id = await nailTaskCreate(payload)
         iterationPrompt.value = ''
+        baseResult.value = undefined
+        await router.push({ path: '/nail/ai/detail', query: { id } })
+    } finally { submitting.value = false }
+}
+const replayWithSameSeed = async () => {
+    if (!task.value || !task.value.seed) return
+    submitting.value = true
+    const spec = task.value.designSpec
+    const payload: NailGeneratePayload = {
+        taskType: task.value.referenceAssetId ? 'IMAGE_TO_IMAGE' : 'TEXT_TO_IMAGE',
+        prompt: task.value.prompt, creativeMode: spec.creativeMode, nailShape: spec.nailShape,
+        finish: spec.finish, designStyle: spec.designStyle, layoutStyle: spec.layoutStyle,
+        trendPreset: spec.trendPreset, referenceStrategy: spec.referenceStrategy, colorPalette: spec.colorPalette,
+        aspectRatio: task.value.aspectRatio as NailGeneratePayload['aspectRatio'],
+        resolution: task.value.resolution as NailGeneratePayload['resolution'], outputCount: task.value.outputCount,
+        referenceAssetId: task.value.referenceAssetId,
+        seed: task.value.seed
+    }
+    try {
+        const id = await nailTaskCreate(payload)
         await router.push({ path: '/nail/ai/detail', query: { id } })
     } finally { submitting.value = false }
 }
@@ -245,6 +294,8 @@ onBeforeUnmount(() => { if (pollTimer) window.clearInterval(pollTimer) })
 .title-line span { color: #a06d78; font-size: 9px; letter-spacing: .16em; }
 .title-line h1 { margin: 4px 0 0; font-family: 'Noto Serif SC', 'Songti SC', serif; font-size: 25px; font-weight: 560; }
 .rename-button { display: grid; width: 30px; height: 30px; place-items: center; border: 1px solid #dfe2e7; border-radius: 8px; background: #fff; color: #727780; }
+.delete-button { color: #b0545c; }
+.delete-button:hover { border-color: #e2b3b7; color: #a24047; }
 .meta-row { display: flex; align-items: center; gap: 8px; margin-top: 10px; color: #8d929a; font-size: 10px; }
 .meta-row i { width: 3px; height: 3px; border-radius: 50%; background: #b5b9c0; }
 .status-pill { padding: 6px 10px; border-radius: 6px; background: #edf0f2; color: #66707a; font-size: 10px; }
@@ -266,6 +317,7 @@ onBeforeUnmount(() => { if (pollTimer) window.clearInterval(pollTimer) })
 @keyframes craft { to { background: #d4a5af; transform: translateY(-5px); } }
 .failed-state,.missing-state { display: grid; min-height: 360px; place-items: center; place-content: center; color: #9499a1; text-align: center; }.failed-state :deep(.icon),.missing-state :deep(.icon){font-size:32px}.failed-state b { margin-top: 12px; color: #4b5058; }.failed-state p { max-width: 520px; margin: 6px 0 0; font-size: 11px; }.missing-state h2 { margin: 12px 0; color: #4b5058; font-size: 18px; }
 .iteration-composer { position: absolute; right: 28px; bottom: 20px; left: 304px; display: grid; grid-template-columns: 36px minmax(0,1fr) auto; align-items: end; gap: 10px; padding: 10px; border: 1px solid #d9dde3; border-radius: 15px; background: #fff; box-shadow: 0 16px 48px rgba(37,41,48,.12); }.iteration-composer > button:first-child { display: grid; width: 36px; height: 36px; place-items: center; border: 1px solid #e0e3e8; border-radius: 9px; background: #f7f8fa; color: #7c818a; }.iteration-composer textarea { min-height: 40px; max-height: 100px; resize: none; border: 0; outline: 0; color: #34383e; font-family: inherit; font-size: 12px; line-height: 1.6; }.iterate-button { display: flex; align-items: center; gap: 7px; min-height: 38px; padding: 0 13px; border: 0; border-radius: 10px; background: #24272c; color: #fff; }.iterate-button:disabled { opacity: .4; }
+.base-hint { position: absolute; right: 28px; bottom: 96px; left: 304px; display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 8px 12px; border: 1px solid #d9cdd0; border-radius: 10px; background: #fbf6f7; color: #8f5e69; font-size: 11px; }.base-hint button { border: 0; background: none; color: #a06d78; font-size: 11px; cursor: pointer; }
 button:focus-visible,a:focus-visible,textarea:focus-visible { outline: 2px solid #b97987; outline-offset: 2px; }
 @media (max-width:1100px){.detail-shell{grid-template-columns:1fr}.iteration-composer{left:28px}.detail-stage{min-height:900px}}
 @media (max-width:760px){.detail-header,.prompt-panel,.result-area{padding-right:20px;padding-left:20px}.result-grid,.result-grid.single{grid-template-columns:1fr}.result-card footer{align-items:flex-start;flex-direction:column}.reference-panel{margin-right:20px;margin-left:20px}.iteration-composer{right:14px;left:14px}.meta-row{flex-wrap:wrap}}
@@ -313,6 +365,7 @@ button:focus-visible,a:focus-visible,textarea:focus-visible { outline: 2px solid
 .result-card { border: 1px solid #e7e1dc; border-radius: 1px; }.result-card :deep(.el-image) { aspect-ratio: 1; }.result-card footer { padding: 10px; }
 .generating-state,.failed-state { min-height: 260px; border: 1px solid #e7e1dc; border-radius: 1px; }
 .iteration-composer { position: static; width: auto; margin: 0 30px; grid-template-columns: 36px minmax(0, 1fr) auto; transform: none; border-radius: 1px; box-shadow: none; }
+.base-hint { position: static; margin: 8px 30px 0; border-radius: 1px; }
 .iterate-button { display: flex; width: auto; min-height: 38px; padding: 0 13px; border-radius: 1px; }.iterate-button span { display: inline; }
 @media (max-width:1100px){.detail-shell{grid-template-columns:1fr}.detail-stage{min-height:0}.iteration-composer{margin:0 28px}.detail-titlebar{padding-right:2px;padding-left:2px}}
 @media (max-width:760px){.design-detail-page{padding:14px 0}.detail-titlebar{align-items:flex-start;flex-direction:column}.detail-header,.prompt-panel,.result-area{padding-right:20px;padding-left:20px}.reference-panel,.iteration-composer{margin-right:20px;margin-left:20px}.result-grid,.result-grid.single{grid-template-columns:1fr}.result-card footer{align-items:flex-start;flex-direction:column}.task-preview{width:54px;height:54px}}

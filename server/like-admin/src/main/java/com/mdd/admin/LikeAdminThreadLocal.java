@@ -65,6 +65,16 @@ public class LikeAdminThreadLocal {
         return ListUtils.stringToListAsInt(roleIds, ",");
     }
 
+    /** 美甲会员角色ID（对应 la_system_auth_role 中的“会员”角色） */
+    private static final int NAIL_MEMBER_ROLE_ID = 2;
+
+    /**
+     * 当前登录账号是否为美甲会员（会员数据按创建人隔离）
+     */
+    public static boolean isNailMember() {
+        return getRoleIds().contains(NAIL_MEMBER_ROLE_ID);
+    }
+
     /**
      * 删除本地线程
      */

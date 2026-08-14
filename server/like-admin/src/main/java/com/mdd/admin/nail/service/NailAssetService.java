@@ -2,6 +2,8 @@ package com.mdd.admin.nail.service;
 
 import com.alibaba.fastjson2.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import cn.dev33.satoken.stp.StpUtil;
 import com.mdd.admin.LikeAdminThreadLocal;
 import com.mdd.admin.nail.dto.NailAssetBatchDeleteRequest;
@@ -33,10 +35,10 @@ import java.util.stream.Collectors;
 public class NailAssetService {
     private static final int MAX_BATCH = 50;
     private static final Set<String> CATEGORIES = Set.of("INSPIRATION", "AI_WORK", "TREND", "COMMERCIAL", "CLIENT_REFERENCE");
-    private static final Set<String> STYLES = Set.of("QUIET_LUXURY", "KOREAN_CLEAR", "RUNWAY", "FUTURISTIC", "ROMANTIC", "SWEET_COOL");
+    private static final Set<String> STYLES = Set.of("QUIET_LUXURY", "KOREAN_CLEAR", "RUNWAY", "FUTURISTIC", "ROMANTIC", "SWEET_COOL", "MINIMALIST", "Y2K", "COQUETTE", "OLD_MONEY", "DOPAMINE", "MORANDI");
     private static final Set<String> COLORS = Set.of("PINK", "RED", "NUDE", "WHITE", "BLACK", "BLUE", "PURPLE", "GREEN", "YELLOW", "METALLIC", "NEUTRAL", "MULTICOLOR");
-    private static final Set<String> SHAPES = Set.of("SHORT_ALMOND", "SHORT_SQUOVAL", "ALMOND", "SQUARE", "COFFIN");
-    private static final Set<String> CRAFTS = Set.of("VELVET_CAT_EYE", "JELLY", "CHROME", "MICRO_FRENCH", "AURA", "SCULPTED_GEL", "GLOSSY_GEL");
+    private static final Set<String> SHAPES = Set.of("SHORT_ALMOND", "SHORT_SQUOVAL", "ALMOND", "SQUARE", "COFFIN", "ROUND", "STILETTO", "LIPSTICK");
+    private static final Set<String> CRAFTS = Set.of("VELVET_CAT_EYE", "JELLY", "CHROME", "MICRO_FRENCH", "AURA", "SCULPTED_GEL", "GLOSSY_GEL", "FRENCH_TIP", "MILK_BATH", "OMBRE", "GLITTER", "PEARL");
     private static final Set<String> SOURCES = Set.of("UPLOAD", "AI", "PUBLIC_REFERENCE");
     private static final Set<String> COPYRIGHTS = Set.of("ORIGINAL", "AUTHORIZED", "AI_GENERATED");
 
@@ -49,7 +51,7 @@ public class NailAssetService {
         int size = Math.max(1, Math.min(page.getPageSize(), 50));
         boolean oldest = "OLDEST".equalsIgnoreCase(search.getSort());
         Integer cursor = decodeCursor(search.getCursor());
-        QueryWrapper<NailAsset> query = filters(search);
+        QueryWrapper<NailAsset> query = applyMemberFilter(filters(search));
         if (cursor != null) {
             if (oldest) query.gt("id", cursor); else query.lt("id", cursor);
         }
@@ -61,7 +63,7 @@ public class NailAssetService {
         String nextCursor = hasMore && !records.isEmpty() ? encodeCursor(records.get(records.size() - 1).getId()) : "";
         boolean allowOriginal = canDownloadOriginal();
         List<Map<String, Object>> rows = records.stream().map(asset -> toView(asset, allowOriginal)).collect(Collectors.toList());
-        long total = assetMapper.selectCount(filters(search));
+        long total = assetMapper.selectCount(applyMemberFilter(filters(search)));
         Map<String, Object> extend = new LinkedHashMap<>();
         extend.put("nextCursor", nextCursor); extend.put("hasMore", hasMore);
         return PageResult.iPageHandle(total, 1L, (long) size, rows, extend);
@@ -70,12 +72,12 @@ public class NailAssetService {
     public Map<String, Object> options() {
         Map<String, Object> options = new LinkedHashMap<>();
         options.put("categories", optionList(new String[][]{{"INSPIRATION","灵感参考"},{"AI_WORK","AI 作品"},{"TREND","趋势款式"},{"COMMERCIAL","商业成片"},{"CLIENT_REFERENCE","客户参考"}}));
-        options.put("styles", optionList(new String[][]{{"QUIET_LUXURY","克制高级"},{"KOREAN_CLEAR","韩系清透"},{"RUNWAY","秀场前卫"},{"FUTURISTIC","未来机能"},{"ROMANTIC","细腻浪漫"},{"SWEET_COOL","甜酷混搭"}}));
+        options.put("styles", optionList(new String[][]{{"QUIET_LUXURY","克制高级"},{"KOREAN_CLEAR","韩系清透"},{"RUNWAY","秀场前卫"},{"FUTURISTIC","未来机能"},{"ROMANTIC","细腻浪漫"},{"SWEET_COOL","甜酷混搭"},{"MINIMALIST","极简主义"},{"Y2K","千禧复古"},{"COQUETTE","甜心蝴蝶结"},{"OLD_MONEY","老钱风"},{"DOPAMINE","多巴胺"},{"MORANDI","莫兰迪"}}));
         options.put("colors", optionList(new String[][]{{"PINK","粉色系"},{"RED","红色系"},{"NUDE","裸色系"},{"WHITE","白色系"},{"BLACK","黑色系"},{"BLUE","蓝色系"},{"PURPLE","紫色系"},{"GREEN","绿色系"},{"YELLOW","黄色系"},{"METALLIC","金属色"},{"NEUTRAL","中性色"},{"MULTICOLOR","多色混搭"}}));
-        options.put("shapes", optionList(new String[][]{{"SHORT_ALMOND","短杏仁"},{"SHORT_SQUOVAL","短方圆"},{"ALMOND","杏仁"},{"SQUARE","方形"},{"COFFIN","芭蕾"}}));
-        options.put("crafts", optionList(new String[][]{{"VELVET_CAT_EYE","丝绒猫眼"},{"JELLY","果冻透色"},{"CHROME","镜面铬光"},{"MICRO_FRENCH","微法式"},{"AURA","晕染光圈"},{"SCULPTED_GEL","立体凝胶"},{"GLOSSY_GEL","高亮凝胶"}}));
+        options.put("shapes", optionList(new String[][]{{"SHORT_ALMOND","短杏仁"},{"SHORT_SQUOVAL","短方圆"},{"ALMOND","杏仁"},{"SQUARE","方形"},{"COFFIN","芭蕾"},{"ROUND","圆形"},{"STILETTO","尖形"},{"LIPSTICK","唇形"}}));
+        options.put("crafts", optionList(new String[][]{{"VELVET_CAT_EYE","丝绒猫眼"},{"JELLY","果冻透色"},{"CHROME","镜面铬光"},{"MICRO_FRENCH","微法式"},{"AURA","晕染光圈"},{"SCULPTED_GEL","立体凝胶"},{"GLOSSY_GEL","高亮凝胶"},{"FRENCH_TIP","经典法式"},{"MILK_BATH","牛奶浴"},{"OMBRE","渐变"},{"GLITTER","满钻闪粉"},{"PEARL","珍珠"}}));
         LinkedHashSet<String> tags = new LinkedHashSet<>();
-        assetMapper.selectList(new QueryWrapper<NailAsset>().select("tags_json").eq("is_delete", 0).eq("status", "ACTIVE").orderByDesc("id").last("limit 500"))
+        assetMapper.selectList(applyMemberFilter(new QueryWrapper<NailAsset>().select("tags_json").eq("is_delete", 0).eq("status", "ACTIVE").orderByDesc("id").last("limit 500")))
                 .forEach(asset -> tags.addAll(parseTags(asset.getTagsJson())));
         options.put("tags", tags);
         return options;
@@ -140,6 +142,20 @@ public class NailAssetService {
         return asset;
     }
 
+    /**
+     * 会员使用参考图：平台共享资产（UPLOAD/AI）对所有人开放；
+     * 会员私有参考图（PUBLIC_REFERENCE）仅本人可用，避免不同会员的数据混用。
+     */
+    public NailAsset requireUsableForMember(Integer id, int memberId) {
+        NailAsset asset = requireUsable(id);
+        if ("PUBLIC_REFERENCE".equals(asset.getSource())
+                && asset.getCreatorId() != null && asset.getCreatorId() != 0
+                && asset.getCreatorId() != memberId) {
+            throw new OperateException("只能使用自己的参考图或平台共享资产");
+        }
+        return asset;
+    }
+
     @Transactional
     public Integer adopt(StoredImage image, String name, String prompt, int creatorId, Long sourceTaskId, Long sourceResultId) {
         NailAsset asset = new NailAsset();
@@ -155,6 +171,40 @@ public class NailAssetService {
 
     public long countActive() { return assetMapper.selectCount(new QueryWrapper<NailAsset>().eq("is_delete", 0).eq("status", "ACTIVE")); }
 
+    /**
+     * 分页查询某个会员拥有的资产（上传参考图 + 采纳的 AI 作品）。
+     */
+    public PageResult<Map<String, Object>> listByCreator(PageValidate page, int creatorId) {
+        int size = Math.max(1, Math.min(page.getPageSize(), 50));
+        QueryWrapper<NailAsset> query = new QueryWrapper<NailAsset>()
+                .eq("is_delete", 0)
+                .eq("creator_id", creatorId)
+                .orderByDesc("id");
+        IPage<NailAsset> result = assetMapper.selectPage(new Page<>(page.getPageNo(), size), query);
+        List<Map<String, Object>> rows = result.getRecords().stream()
+                .map(asset -> toView(asset, false))
+                .collect(Collectors.toList());
+        return PageResult.iPageHandle(result.getTotal(), result.getCurrent(), result.getSize(), rows);
+    }
+
+    public long countByCreator(int creatorId) {
+        return assetMapper.selectCount(new QueryWrapper<NailAsset>().eq("is_delete", 0).eq("creator_id", creatorId));
+    }
+
+    @Transactional
+    public void deleteMemberAsset(Integer id, int memberId) {
+        NailAsset asset = requireExisting(id);
+        if (asset.getCreatorId() == null || !Integer.valueOf(memberId).equals(asset.getCreatorId())) {
+            throw new OperateException("无权删除该资产");
+        }
+        asset.setIsDelete(1);
+        asset.setStatus("DELETED");
+        asset.setDeleteTime(TimeUtils.timestamp());
+        asset.setUpdateTime(TimeUtils.timestamp());
+        assetMapper.updateById(asset);
+        audit(asset.getId(), "SOFT_DELETE", "会员删除资产", memberId);
+    }
+
     public Map<String, Object> findView(Integer id) {
         NailAsset asset = assetMapper.selectById(id);
         if (asset == null || Integer.valueOf(1).equals(asset.getIsDelete())) return null;
@@ -164,6 +214,7 @@ public class NailAssetService {
     public Map<String, Object> detail(Integer id) {
         NailAsset asset = assetMapper.selectById(id);
         if (asset == null || Integer.valueOf(1).equals(asset.getIsDelete())) throw new OperateException("资产不存在");
+        ensureOwned(asset, LikeAdminThreadLocal.getAdminId());
         Map<String, Object> result = toView(asset, canDownloadOriginal());
         List<Map<String, Object>> audits = auditMapper.selectList(new QueryWrapper<NailAssetAudit>().eq("asset_id", id).orderByDesc("id").last("limit 20"))
                 .stream().map(item -> {
@@ -178,6 +229,7 @@ public class NailAssetService {
     @Transactional
     public void update(NailAssetUpdateRequest request, int operatorId) {
         NailAsset asset = requireExisting(request.getId());
+        ensureOwned(asset, operatorId);
         asset.setName(request.getName().trim()); asset.setCopyrightStatus(allowed(COPYRIGHTS, request.getCopyrightStatus(), "ORIGINAL"));
         asset.setAiUsable(Integer.valueOf(1).equals(request.getAiUsable()) && isAuthorized(asset.getCopyrightStatus()) ? 1 : 0);
         applyMetadata(asset, allowed(CATEGORIES, request.getCategory(), "INSPIRATION"), allowed(STYLES, request.getStyle(), "QUIET_LUXURY"),
@@ -194,8 +246,57 @@ public class NailAssetService {
 
     private void deleteOne(Integer id, int operatorId) {
         NailAsset asset = requireExisting(id);
+        ensureOwned(asset, operatorId);
         asset.setIsDelete(1); asset.setStatus("DELETED"); asset.setDeleteTime(TimeUtils.timestamp()); asset.setUpdateTime(TimeUtils.timestamp());
         assetMapper.updateById(asset); audit(asset.getId(), "SOFT_DELETE", "资产进入回收状态", operatorId);
+    }
+
+    /** 会员数据隔离：会员只能看到自己创建的资产 */
+    private QueryWrapper<NailAsset> applyMemberFilter(QueryWrapper<NailAsset> query) {
+        if (LikeAdminThreadLocal.isNailMember()) {
+            query.eq("creator_id", LikeAdminThreadLocal.getAdminId());
+        }
+        return query;
+    }
+
+    /** 会员只能操作自己创建的资产（数据隔离） */
+    private void ensureOwned(NailAsset asset, int operatorId) {
+        if (LikeAdminThreadLocal.isNailMember() && (asset.getCreatorId() == null || asset.getCreatorId() != operatorId)) {
+            throw new OperateException("无权操作该资产");
+        }
+    }
+
+    /**
+     * 关联删除：设计记录（任务/生成结果）被删除后，同步回收由它们采纳出来的派生资产。
+     * <p>
+     * 派生资产通过 source_task_id / source_result_id 与设计记录建立外键关联，
+     * 因此删除记录前必须先软删资产并解除这些外键指针，否则会触发外键约束错误。
+     * <p>
+     * 注意：不能过滤 is_delete=0 —— 已被软删的资产行仍然保留外键指针，
+     * 删除结果/任务时同样会触发外键约束，必须一并解除。
+     */
+    @Transactional
+    public void removeDerivedBySource(Long sourceTaskId, List<Long> sourceResultIds, int operatorId) {
+        boolean hasTask = sourceTaskId != null;
+        boolean hasResults = sourceResultIds != null && !sourceResultIds.isEmpty();
+        if (!hasTask && !hasResults) return;
+
+        QueryWrapper<NailAsset> query = new QueryWrapper<NailAsset>();
+        if (hasTask && hasResults) {
+            query.and(w -> w.eq("source_task_id", sourceTaskId).or().in("source_result_id", sourceResultIds));
+        } else if (hasTask) {
+            query.eq("source_task_id", sourceTaskId);
+        } else {
+            query.in("source_result_id", sourceResultIds);
+        }
+        List<NailAsset> assets = assetMapper.selectList(query);
+        if (assets.isEmpty()) return;
+
+        long now = TimeUtils.timestamp();
+        for (NailAsset asset : assets) {
+            assetMapper.cascadeRemoveSource(asset.getId(), now, now);
+            audit(asset.getId(), "CASCADE_DELETE", "关联设计记录已删除，派生资产同步回收", operatorId);
+        }
     }
 
     public Map<String, Object> toView(NailAsset asset) {

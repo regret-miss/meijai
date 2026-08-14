@@ -1,140 +1,144 @@
-13:21:39.820 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
-13:21:39.838 [main] INFO  com.mdd.front.LikeFrontApplication - Starting LikeFrontApplication using Java 21.0.12 on angle with PID 2720 (G:\desktop\likeadmin_java-master\server\like-front\target\classes started by 15367 in G:\desktop\likeadmin_java-master)
-13:21:39.839 [main] INFO  com.mdd.front.LikeFrontApplication - The following 2 profiles are active: "dev", "local"
-13:21:40.600 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8084"]
-13:21:40.600 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
-13:21:40.601 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.83]
-13:21:40.670 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-13:21:41.123 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Starting...
-13:21:46.283 [main] ERROR com.zaxxer.hikari.pool.HikariPool - DateSourceHikariCP - Exception during pool initialization.
-com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: Could not create connection to database server. Attempted reconnect 3 times. Giving up.
-	at jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62) ~[?:?]
-	at java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502) ~[?:?]
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:486) ~[?:?]
-	at com.mysql.jdbc.Util.handleNewInstance(Util.java:403) ~[mysql-connector-java-5.1.49.jar:5.1.49]
-	at com.mysql.jdbc.Util.getInstance(Util.java:386) ~[mysql-connector-java-5.1.49.jar:5.1.49]
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:919) ~[mysql-connector-java-5.1.49.jar:5.1.49]
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:898) ~[mysql-connector-java-5.1.49.jar:5.1.49]
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:887) ~[mysql-connector-java-5.1.49.jar:5.1.49]
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:861) ~[mysql-connector-java-5.1.49.jar:5.1.49]
-	at com.mysql.jdbc.ConnectionImpl.connectWithRetries(ConnectionImpl.java:2095) ~[mysql-connector-java-5.1.49.jar:5.1.49]
-	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2020) ~[mysql-connector-java-5.1.49.jar:5.1.49]
-	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:768) ~[mysql-connector-java-5.1.49.jar:5.1.49]
-	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47) ~[mysql-connector-java-5.1.49.jar:5.1.49]
-	at jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62) ~[?:?]
-	at java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502) ~[?:?]
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:486) ~[?:?]
-	at com.mysql.jdbc.Util.handleNewInstance(Util.java:403) ~[mysql-connector-java-5.1.49.jar:5.1.49]
-	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:385) ~[mysql-connector-java-5.1.49.jar:5.1.49]
-	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:323) ~[mysql-connector-java-5.1.49.jar:5.1.49]
-	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138) ~[HikariCP-4.0.3.jar:?]
-	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:364) ~[HikariCP-4.0.3.jar:?]
-	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:206) ~[HikariCP-4.0.3.jar:?]
-	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:476) ~[HikariCP-4.0.3.jar:?]
-	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561) ~[HikariCP-4.0.3.jar:?]
-	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:115) ~[HikariCP-4.0.3.jar:?]
-	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112) ~[HikariCP-4.0.3.jar:?]
-	at org.springframework.jdbc.datasource.DataSourceUtils.fetchConnection(DataSourceUtils.java:160) ~[spring-jdbc-5.3.31.jar:5.3.31]
-	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:118) ~[spring-jdbc-5.3.31.jar:5.3.31]
-	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:81) ~[spring-jdbc-5.3.31.jar:5.3.31]
-	at org.mybatis.spring.transaction.SpringManagedTransaction.openConnection(SpringManagedTransaction.java:80) ~[mybatis-spring-2.0.7.jar:2.0.7]
-	at org.mybatis.spring.transaction.SpringManagedTransaction.getConnection(SpringManagedTransaction.java:67) ~[mybatis-spring-2.0.7.jar:2.0.7]
-	at org.apache.ibatis.executor.BaseExecutor.getConnection(BaseExecutor.java:337) ~[mybatis-3.5.9.jar:3.5.9]
-	at org.apache.ibatis.executor.SimpleExecutor.prepareStatement(SimpleExecutor.java:86) ~[mybatis-3.5.9.jar:3.5.9]
-	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:62) ~[mybatis-3.5.9.jar:3.5.9]
-	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:325) ~[mybatis-3.5.9.jar:3.5.9]
-	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156) ~[mybatis-3.5.9.jar:3.5.9]
-	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109) ~[mybatis-3.5.9.jar:3.5.9]
-	at com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor.intercept(MybatisPlusInterceptor.java:81) ~[mybatis-plus-extension-3.5.2.jar:3.5.2]
-	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:62) ~[mybatis-3.5.9.jar:3.5.9]
-	at jdk.proxy2.$Proxy125.query(Unknown Source) ~[?:?]
-	at jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
-	at java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
-	at org.apache.ibatis.plugin.Invocation.proceed(Invocation.java:49) ~[mybatis-3.5.9.jar:3.5.9]
-	at com.github.yulichang.interceptor.MPJInterceptor.intercept(MPJInterceptor.java:82) ~[mybatis-plus-join-1.2.4.jar:?]
-	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:62) ~[mybatis-3.5.9.jar:3.5.9]
-	at jdk.proxy2.$Proxy125.query(Unknown Source) ~[?:?]
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:151) ~[mybatis-3.5.9.jar:3.5.9]
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:145) ~[mybatis-3.5.9.jar:3.5.9]
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140) ~[mybatis-3.5.9.jar:3.5.9]
-	at jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
-	at java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
-	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427) ~[mybatis-spring-2.0.7.jar:2.0.7]
-	at jdk.proxy2.$Proxy93.selectList(Unknown Source) ~[?:?]
-	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:224) ~[mybatis-spring-2.0.7.jar:2.0.7]
-	at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.executeForMany(MybatisMapperMethod.java:166) ~[mybatis-plus-core-3.5.2.jar:3.5.2]
-	at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.execute(MybatisMapperMethod.java:77) ~[mybatis-plus-core-3.5.2.jar:3.5.2]
-	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy$PlainMethodInvoker.invoke(MybatisMapperProxy.java:148) ~[mybatis-plus-core-3.5.2.jar:3.5.2]
-	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy.invoke(MybatisMapperProxy.java:89) ~[mybatis-plus-core-3.5.2.jar:3.5.2]
-	at jdk.proxy2.$Proxy123.selectList(Unknown Source) ~[?:?]
-	at com.mdd.common.config.wechat.WxMnpConfiguration.getChannelConfig(WxMnpConfiguration.java:85) ~[classes/:?]
-	at com.mdd.common.config.wechat.WxMnpConfiguration.wxMnpService(WxMnpConfiguration.java:44) ~[classes/:?]
-	at com.mdd.common.config.wechat.WxMnpConfiguration$$EnhancerBySpringCGLIB$$9f46474f.CGLIB$wxMnpService$1(<generated>) ~[classes/:?]
-	at com.mdd.common.config.wechat.WxMnpConfiguration$$EnhancerBySpringCGLIB$$9f46474f$$FastClassBySpringCGLIB$$6796bfe4.invoke(<generated>) ~[classes/:?]
-	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:244) ~[spring-core-5.3.31.jar:5.3.31]
-	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:331) ~[spring-context-5.3.31.jar:5.3.31]
-	at com.mdd.common.config.wechat.WxMnpConfiguration$$EnhancerBySpringCGLIB$$9f46474f.wxMnpService(<generated>) ~[classes/:?]
-	at jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
-	at java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
-	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154) ~[spring-beans-5.3.31.jar:5.3.31]
-	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:648) ~[spring-beans-5.3.31.jar:5.3.31]
-	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:481) ~[spring-beans-5.3.31.jar:5.3.31]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1352) ~[spring-beans-5.3.31.jar:5.3.31]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1195) ~[spring-beans-5.3.31.jar:5.3.31]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582) ~[spring-beans-5.3.31.jar:5.3.31]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.31.jar:5.3.31]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.31.jar:5.3.31]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.31.jar:5.3.31]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.31.jar:5.3.31]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.31.jar:5.3.31]
-	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276) ~[spring-beans-5.3.31.jar:5.3.31]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391) ~[spring-beans-5.3.31.jar:5.3.31]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311) ~[spring-beans-5.3.31.jar:5.3.31]
-	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.autowireResource(CommonAnnotationBeanPostProcessor.java:544) ~[spring-context-5.3.31.jar:5.3.31]
-	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.getResource(CommonAnnotationBeanPostProcessor.java:520) ~[spring-context-5.3.31.jar:5.3.31]
-	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$ResourceElement.getResourceToInject(CommonAnnotationBeanPostProcessor.java:673) ~[spring-context-5.3.31.jar:5.3.31]
-	at org.springframework.beans.factory.annotation.InjectionMetadata$InjectedElement.inject(InjectionMetadata.java:237) ~[spring-beans-5.3.31.jar:5.3.31]
-	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119) ~[spring-beans-5.3.31.jar:5.3.31]
-	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessProperties(CommonAnnotationBeanPostProcessor.java:329) ~[spring-context-5.3.31.jar:5.3.31]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1431) ~[spring-beans-5.3.31.jar:5.3.31]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:619) ~[spring-beans-5.3.31.jar:5.3.31]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.31.jar:5.3.31]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.31.jar:5.3.31]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.31.jar:5.3.31]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.31.jar:5.3.31]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.31.jar:5.3.31]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955) ~[spring-beans-5.3.31.jar:5.3.31]
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:929) ~[spring-context-5.3.31.jar:5.3.31]
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:591) ~[spring-context-5.3.31.jar:5.3.31]
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147) ~[spring-boot-2.7.18.jar:2.7.18]
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:732) ~[spring-boot-2.7.18.jar:2.7.18]
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:409) ~[spring-boot-2.7.18.jar:2.7.18]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308) ~[spring-boot-2.7.18.jar:2.7.18]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300) ~[spring-boot-2.7.18.jar:2.7.18]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289) ~[spring-boot-2.7.18.jar:2.7.18]
-	at com.mdd.front.LikeFrontApplication.main(LikeFrontApplication.java:22) ~[classes/:?]
-Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-	at jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62) ~[?:?]
-	at java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502) ~[?:?]
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:486) ~[?:?]
-	at com.mysql.jdbc.Util.handleNewInstance(Util.java:403) ~[mysql-connector-java-5.1.49.jar:5.1.49]
-	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:990) ~[mysql-connector-java-5.1.49.jar:5.1.49]
-	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:335) ~[mysql-connector-java-5.1.49.jar:5.1.49]
-	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2187) ~[mysql-connector-java-5.1.49.jar:5.1.49]
-	at com.mysql.jdbc.ConnectionImpl.connectWithRetries(ConnectionImpl.java:2036) ~[mysql-connector-java-5.1.49.jar:5.1.49]
-	... 95 more
-Caused by: java.net.ConnectException: Connection refused: getsockopt
-	at sun.nio.ch.Net.pollConnect(Native Method) ~[?:?]
-	at sun.nio.ch.Net.pollConnectNow(Net.java:694) ~[?:?]
-	at sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:542) ~[?:?]
-	at sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:592) ~[?:?]
-	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327) ~[?:?]
-	at java.net.Socket.connect(Socket.java:751) ~[?:?]
-	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:211) ~[mysql-connector-java-5.1.49.jar:5.1.49]
-	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:299) ~[mysql-connector-java-5.1.49.jar:5.1.49]
-	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2187) ~[mysql-connector-java-5.1.49.jar:5.1.49]
-	at com.mysql.jdbc.ConnectionImpl.connectWithRetries(ConnectionImpl.java:2036) ~[mysql-connector-java-5.1.49.jar:5.1.49]
-	... 95 more
-13:21:46.293 [main] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+01:30:26.309 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+01:30:26.331 [main] INFO  com.mdd.front.LikeFrontApplication - Starting LikeFrontApplication using Java 21.0.12 on angle with PID 15772 (G:\desktop\likeadmin_java-master\server\like-front\target\classes started by 15367 in G:\desktop\likeadmin_java-master)
+01:30:26.333 [main] INFO  com.mdd.front.LikeFrontApplication - The following 2 profiles are active: "dev", "local"
+01:30:27.247 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8084"]
+01:30:27.249 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+01:30:27.249 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.83]
+01:30:27.324 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+01:30:27.815 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Starting...
+01:30:27.981 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Start completed.
+01:30:29.210 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8084"]
+01:30:29.484 [main] INFO  com.mdd.front.LikeFrontApplication - Started LikeFrontApplication in 3.445 seconds (JVM running for 4.342)
+01:35:06.434 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Shutdown initiated...
+01:35:06.436 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Shutdown completed.
+01:35:09.485 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+01:35:09.504 [main] INFO  com.mdd.front.LikeFrontApplication - Starting LikeFrontApplication using Java 21.0.12 on angle with PID 25428 (G:\desktop\likeadmin_java-master\server\like-front\target\classes started by 15367 in G:\desktop\likeadmin_java-master)
+01:35:09.506 [main] INFO  com.mdd.front.LikeFrontApplication - The following 2 profiles are active: "dev", "local"
+01:35:10.280 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8084"]
+01:35:10.281 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+01:35:10.281 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.83]
+01:35:10.357 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+01:35:10.789 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Starting...
+01:35:10.883 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Start completed.
+01:35:11.888 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8084"]
+01:35:12.130 [main] INFO  com.mdd.front.LikeFrontApplication - Started LikeFrontApplication in 2.86 seconds (JVM running for 3.276)
+01:48:06.232 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Shutdown initiated...
+01:48:06.234 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Shutdown completed.
+01:48:55.625 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+01:48:55.646 [main] INFO  com.mdd.front.LikeFrontApplication - Starting LikeFrontApplication using Java 21.0.12 on angle with PID 24676 (G:\desktop\likeadmin_java-master\server\like-front\target\classes started by 15367 in G:\desktop\likeadmin_java-master)
+01:48:55.648 [main] INFO  com.mdd.front.LikeFrontApplication - The following 2 profiles are active: "dev", "local"
+01:48:56.348 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8084"]
+01:48:56.349 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+01:48:56.349 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.83]
+01:48:56.416 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+01:48:56.817 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Starting...
+01:48:56.907 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Start completed.
+01:48:57.844 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8084"]
+01:48:58.067 [main] INFO  com.mdd.front.LikeFrontApplication - Started LikeFrontApplication in 2.659 seconds (JVM running for 3.08)
+02:29:34.491 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Shutdown initiated...
+02:29:34.492 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Shutdown completed.
+11:49:26.934 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+11:49:26.956 [main] INFO  com.mdd.front.LikeFrontApplication - Starting LikeFrontApplication using Java 21.0.12 on angle with PID 10068 (G:\desktop\likeadmin_java-master\server\like-front\target\classes started by 15367 in G:\desktop\likeadmin_java-master)
+11:49:26.958 [main] INFO  com.mdd.front.LikeFrontApplication - The following 2 profiles are active: "dev", "local"
+11:49:27.857 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8084"]
+11:49:27.858 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+11:49:27.858 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.83]
+11:49:27.936 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+11:49:28.392 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Starting...
+11:49:28.502 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Start completed.
+11:49:29.770 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8084"]
+11:49:30.086 [main] INFO  com.mdd.front.LikeFrontApplication - Started LikeFrontApplication in 3.458 seconds (JVM running for 11.94)
+12:09:28.640 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Shutdown initiated...
+12:09:28.642 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Shutdown completed.
+12:09:30.284 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+12:09:30.306 [main] INFO  com.mdd.front.LikeFrontApplication - Starting LikeFrontApplication using Java 21.0.12 on angle with PID 13936 (G:\desktop\likeadmin_java-master\server\like-front\target\classes started by 15367 in G:\desktop\likeadmin_java-master)
+12:09:30.307 [main] INFO  com.mdd.front.LikeFrontApplication - The following 2 profiles are active: "dev", "local"
+12:09:31.051 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8084"]
+12:09:31.051 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+12:09:31.051 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.83]
+12:09:31.117 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+12:09:31.530 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Starting...
+12:09:31.625 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Start completed.
+12:09:32.604 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8084"]
+12:09:32.838 [main] INFO  com.mdd.front.LikeFrontApplication - Started LikeFrontApplication in 2.792 seconds (JVM running for 3.264)
+13:08:52.395 [DateSourceHikariCP housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - DateSourceHikariCP - Thread starvation or clock leap detected (housekeeper delta=5m48s804ms424µs400ns).
+14:16:34.363 [DateSourceHikariCP housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - DateSourceHikariCP - Thread starvation or clock leap detected (housekeeper delta=1h41s853ms390µs800ns).
+14:17:03.817 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Shutdown initiated...
+14:17:03.819 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Shutdown completed.
+14:33:52.134 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+14:33:52.154 [main] INFO  com.mdd.front.LikeFrontApplication - Starting LikeFrontApplication using Java 21.0.12 on angle with PID 3284 (G:\desktop\likeadmin_java-master\server\like-front\target\classes started by 15367 in G:\desktop\likeadmin_java-master)
+14:33:52.156 [main] INFO  com.mdd.front.LikeFrontApplication - The following 2 profiles are active: "dev", "local"
+14:33:53.112 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8084"]
+14:33:53.113 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+14:33:53.113 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.83]
+14:33:53.197 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+14:33:53.654 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Starting...
+14:33:53.766 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Start completed.
+14:33:55.007 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8084"]
+14:33:55.272 [main] INFO  com.mdd.front.LikeFrontApplication - Started LikeFrontApplication in 3.41 seconds (JVM running for 4.891)
+17:15:31.937 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+17:15:31.957 [main] INFO  com.mdd.front.LikeFrontApplication - Starting LikeFrontApplication using Java 21.0.12 on angle with PID 25848 (G:\desktop\likeadmin_java-master\server\like-front\target\classes started by 15367 in G:\desktop\likeadmin_java-master)
+17:15:31.959 [main] INFO  com.mdd.front.LikeFrontApplication - The following 2 profiles are active: "dev", "local"
+17:15:32.858 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8084"]
+17:15:32.859 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+17:15:32.859 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.83]
+17:15:32.942 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+17:15:33.513 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Starting...
+17:15:33.620 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Start completed.
+17:15:34.782 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8084"]
+17:15:35.095 [main] INFO  com.mdd.front.LikeFrontApplication - Started LikeFrontApplication in 3.406 seconds (JVM running for 3.859)
+18:05:22.901 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Shutdown initiated...
+18:05:22.904 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Shutdown completed.
+18:05:26.176 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+18:05:26.195 [main] INFO  com.mdd.front.LikeFrontApplication - Starting LikeFrontApplication using Java 21.0.12 on angle with PID 29576 (G:\desktop\likeadmin_java-master\server\like-front\target\classes started by 15367 in G:\desktop\likeadmin_java-master)
+18:05:26.197 [main] INFO  com.mdd.front.LikeFrontApplication - The following 2 profiles are active: "dev", "local"
+18:05:26.947 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8084"]
+18:05:26.948 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+18:05:26.948 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.83]
+18:05:27.014 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+18:05:27.464 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Starting...
+18:05:27.562 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Start completed.
+18:05:28.573 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8084"]
+18:05:28.826 [main] INFO  com.mdd.front.LikeFrontApplication - Started LikeFrontApplication in 2.869 seconds (JVM running for 3.289)
+18:45:45.283 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Shutdown initiated...
+18:45:45.285 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Shutdown completed.
+19:10:19.538 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+19:10:19.559 [main] INFO  com.mdd.front.LikeFrontApplication - Starting LikeFrontApplication using Java 21.0.12 on angle with PID 30352 (G:\desktop\likeadmin_java-master\server\like-front\target\classes started by 15367 in G:\desktop\likeadmin_java-master)
+19:10:19.561 [main] INFO  com.mdd.front.LikeFrontApplication - The following 2 profiles are active: "dev", "local"
+19:10:20.366 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8084"]
+19:10:20.367 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+19:10:20.367 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.83]
+19:10:20.446 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+19:10:20.931 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Starting...
+19:10:21.033 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Start completed.
+19:10:22.227 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8084"]
+19:10:22.561 [main] INFO  com.mdd.front.LikeFrontApplication - Started LikeFrontApplication in 3.284 seconds (JVM running for 3.783)
+19:40:41.132 [DateSourceHikariCP housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - DateSourceHikariCP - Thread starvation or clock leap detected (housekeeper delta=16m19s787ms363µs200ns).
+19:55:16.996 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Shutdown initiated...
+19:55:16.997 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Shutdown completed.
+19:55:18.605 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+19:55:18.624 [main] INFO  com.mdd.front.LikeFrontApplication - Starting LikeFrontApplication using Java 21.0.12 on angle with PID 504 (G:\desktop\likeadmin_java-master\server\like-front\target\classes started by 15367 in G:\desktop\likeadmin_java-master)
+19:55:18.626 [main] INFO  com.mdd.front.LikeFrontApplication - The following 2 profiles are active: "dev", "local"
+19:55:19.375 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8084"]
+19:55:19.375 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+19:55:19.376 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.83]
+19:55:19.441 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+19:55:19.856 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Starting...
+19:55:19.949 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Start completed.
+19:55:20.913 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8084"]
+19:55:21.138 [main] INFO  com.mdd.front.LikeFrontApplication - Started LikeFrontApplication in 2.763 seconds (JVM running for 3.236)
+22:04:17.903 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Shutdown initiated...
+22:04:17.905 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Shutdown completed.
+22:04:20.967 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+22:04:20.986 [main] INFO  com.mdd.front.LikeFrontApplication - Starting LikeFrontApplication using Java 21.0.12 on angle with PID 28972 (G:\desktop\likeadmin_java-master\server\like-front\target\classes started by 15367 in G:\desktop\likeadmin_java-master)
+22:04:20.987 [main] INFO  com.mdd.front.LikeFrontApplication - The following 2 profiles are active: "dev", "local"
+22:04:21.710 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8084"]
+22:04:21.710 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+22:04:21.710 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.83]
+22:04:21.775 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+22:04:22.208 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Starting...
+22:04:22.301 [main] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Start completed.
+22:04:23.277 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8084"]
+22:04:23.520 [main] INFO  com.mdd.front.LikeFrontApplication - Started LikeFrontApplication in 2.774 seconds (JVM running for 3.214)
+22:19:37.233 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Shutdown initiated...
+22:19:37.235 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - DateSourceHikariCP - Shutdown completed.

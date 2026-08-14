@@ -11,7 +11,7 @@ export interface NailGeneratePayload {
     taskType: 'TEXT_TO_IMAGE' | 'IMAGE_TO_IMAGE'
     prompt: string
     creativeMode: 'DESIGN_BOARD' | 'ON_HAND'
-    nailShape: 'SHORT_ALMOND' | 'SHORT_SQUOVAL' | 'ALMOND' | 'SQUARE' | 'COFFIN'
+    nailShape: 'SHORT_ALMOND' | 'SHORT_SQUOVAL' | 'ALMOND' | 'SQUARE' | 'COFFIN' | 'ROUND' | 'STILETTO' | 'LIPSTICK'
     finish:
         | 'VELVET_CAT_EYE'
         | 'JELLY'
@@ -20,6 +20,11 @@ export interface NailGeneratePayload {
         | 'AURA'
         | 'SCULPTED_GEL'
         | 'GLOSSY_GEL'
+        | 'FRENCH_TIP'
+        | 'MILK_BATH'
+        | 'OMBRE'
+        | 'GLITTER'
+        | 'PEARL'
     designStyle:
         | 'QUIET_LUXURY'
         | 'KOREAN_CLEAR'
@@ -27,6 +32,12 @@ export interface NailGeneratePayload {
         | 'FUTURISTIC'
         | 'ROMANTIC'
         | 'SWEET_COOL'
+        | 'MINIMALIST'
+        | 'Y2K'
+        | 'COQUETTE'
+        | 'OLD_MONEY'
+        | 'DOPAMINE'
+        | 'MORANDI'
     layoutStyle: 'UNIFIED' | 'TWO_ACCENTS' | 'MICRO_FRENCH_LAYOUT' | 'MISMATCHED'
     trendPreset:
         | 'ROSE_VELVET'
@@ -35,6 +46,14 @@ export interface NailGeneratePayload {
         | 'MIXED_METAL'
         | 'AURORA_MAGNETIC'
         | 'KOREAN_SYRUP'
+        | 'JADE_CAT_EYE'
+        | 'MINT_FRENCH'
+        | 'LACE_NAILS'
+        | 'REVERSE_FRENCH'
+        | 'LEOPARD_PRINT'
+        | 'METALLIC_FRENCH'
+        | 'MILKY_WHITE'
+        | 'SUNSET_OMBRE'
         | 'CUSTOM'
     referenceStrategy: 'REINTERPRET' | 'KEEP_PALETTE' | 'KEEP_LAYOUT' | 'KEEP_TEXTURE'
     colorPalette: string
@@ -42,6 +61,9 @@ export interface NailGeneratePayload {
     resolution: '1.5K' | '2K' | '4K'
     outputCount: number
     referenceAssetId?: number
+    styleReferenceId?: number
+    seed?: number
+    model?: string
 }
 
 export interface NailTaskSummary {
@@ -56,8 +78,10 @@ export interface NailTaskSummary {
     resultCount: number
     adoptedCount: number
     referenceAssetId?: number
+    referenceResultId?: number
     creativeMode: 'DESIGN_BOARD' | 'ON_HAND'
     modelCode: string
+    seed?: number
     errorMessage: string
     createTime: string
     coverUrl: string
@@ -73,6 +97,7 @@ export interface NailResult {
     reviewTime: string
     adoptedAssetId?: number
     sort: number
+    score?: number
     createTime: string
 }
 
@@ -167,8 +192,25 @@ export const nailTaskDetail = (params: { id: number }) =>
     request.get({ url: '/nail/ai/task/detail', params })
 export const nailTaskRename = (params: { id: number; title: string }) =>
     request.post({ url: '/nail/ai/task/rename', params })
+export const nailTaskDelete = (params: { id: number }) =>
+    request.post({ url: '/nail/ai/task/delete', params })
 export const nailTaskStats = () => request.get({ url: '/nail/ai/stats' })
 export const nailResultAdopt = (params: { id: number }) =>
     request.post({ url: '/nail/ai/result/adopt', params })
 export const nailResultReject = (params: { id: number; note: string }) =>
     request.post({ url: '/nail/ai/result/reject', params })
+export const nailResultDelete = (params: { id: number }) =>
+    request.post({ url: '/nail/ai/result/delete', params })
+
+export const nailStyleReferenceList = (params?: any) =>
+    request.get({ url: '/nail/style-reference/list', params })
+export const nailStyleReferencePublicList = () =>
+    request.get({ url: '/nail/public/style-references' })
+export const nailStyleReferenceUpload = (data: FormData) =>
+    request.post({ url: '/nail/style-reference/upload', data, headers: { 'Content-Type': 'multipart/form-data' } })
+export const nailStyleReferenceUpdate = (data: any) =>
+    request.post({ url: '/nail/style-reference/update', data })
+export const nailStyleReferenceDelete = (data: { id: number }) =>
+    request.post({ url: '/nail/style-reference/delete', data })
+export const nailStyleReferenceStatus = (data: { id: number; status: string }) =>
+    request.post({ url: '/nail/style-reference/status', data })

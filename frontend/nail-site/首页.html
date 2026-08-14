@@ -1,4 +1,4 @@
-﻿﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
@@ -797,7 +797,7 @@
                </article>
                <!-- clone -->
                <article class="waterfall-card" style="--card-height: 280px;">
-                 <img src="static/mj(10).jpg"" alt="法式跳色">
+                 <img src="static/mj(10).jpg" alt="法式跳色">
                  <div class="waterfall-info">
                   <!-- <p class="waterfall-rank">榜单 · TOP2</p>
                    <h3>法式跳色</h3>
@@ -931,7 +931,7 @@
                  </div>
                </article>
                <article class="waterfall-card" style="--card-height: 280px;">
-                 <img src=src="static/mj(18).jpg" alt="金属流光">
+                 <img src="static/mj(18).jpg" alt="金属流光">
                  <div class="waterfall-info">
                  <!--  <p class="waterfall-rank">榜单 · TOP12</p>
                    <h3>金属流光</h3>
@@ -983,7 +983,7 @@
                  </div>
                </article>
                <article class="waterfall-card" style="--card-height: 330px;">
-                 <img src="static/mj(21).jpg"alt="丝绒墨绿">
+                 <img src="static/mj(21).jpg" alt="丝绒墨绿">
                  <div class="waterfall-info">
                  <!--  <p class="waterfall-rank">榜单 · TOP14</p>
                    <h3>丝绒墨绿</h3>
@@ -1101,7 +1101,7 @@
                </article>
                <!-- clone -->
                <article class="waterfall-card" style="--card-height: 260px;">
-                 <img src="static/mj(28).jpg"alt="星河碎钻">
+                 <img src="static/mj(28).jpg" alt="星河碎钻">
                  <div class="waterfall-info">
                   <!-- <p class="waterfall-rank">榜单 · TOP9</p>
                    <h3>星河碎钻</h3>
@@ -1638,18 +1638,38 @@
           nailAiAnswer.textContent = '正在保存设计意图并前往登录';
           const bridgeUrl = location.protocol === 'file:'
             ? 'http://127.0.0.1:8082/api/nail/creation-bridge/start'
-            : `${location.origin}/api/nail/creation-bridge/start`;
+            : location.origin + '/api/nail/creation-bridge/start';
           try {
-            const response = await fetch(bridgeUrl, {
+            const startResponse = await fetch(bridgeUrl, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
               body: JSON.stringify({ prompt: question })
             });
-            const payload = await response.json().catch(() => null);
-            if (!response.ok || !payload || payload.code !== 200 || !payload.data?.loginUrl) {
-              throw new Error(payload?.msg || '暂时无法保存设计意图，请稍后重试');
+            const startPayload = await startResponse.json().catch(() => null);
+            if (!startResponse.ok || !startPayload || startPayload.code !== 200 || !startPayload.data || !startPayload.data.ticket) {
+              throw new Error(startPayload && startPayload.msg ? startPayload.msg : '暂时无法保存设计意图，请稍后重试');
             }
-            location.assign(payload.data.loginUrl);
+            const ticket = startPayload.data.ticket;
+            let alreadyLoggedIn = false;
+            try {
+              alreadyLoggedIn = await window.NailMemberAuth.isLoggedIn();
+            } catch (error) {
+              alreadyLoggedIn = false;
+            }
+            if (alreadyLoggedIn) {
+              const origin = location.protocol === 'file:' ? 'http://127.0.0.1:8082' : location.origin;
+              const doneResponse = await fetch(origin + '/api/nail/creation-bridge/complete-session?ticket=' + encodeURIComponent(ticket), {
+                method: 'POST',
+                credentials: 'include',
+                headers: { Accept: 'application/json' }
+              });
+              const donePayload = await doneResponse.json().catch(() => null);
+              if (donePayload && donePayload.code === 200 && donePayload.data && donePayload.data.returnUrl) {
+                location.assign(donePayload.data.returnUrl);
+                return;
+              }
+            }
+            location.assign(startPayload.data.loginUrl);
           } catch (error) {
             nailAiAnswer.textContent = error.message || '暂时无法前往登录页，请稍后重试';
             nailAiSubmit.disabled = false;

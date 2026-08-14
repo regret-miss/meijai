@@ -15,9 +15,8 @@ public class NailMemberLoginRequest {
     @Size(min = 6, max = 32, message = "密码格式不正确")
     private String password;
 
-    @NotBlank(message = "请输入验证码")
+    // 验证码可选：前台用户登录可不填；带验证码登录时按需校验
     private String code;
 
-    @NotBlank(message = "验证码已失效，请刷新后重试")
     private String uuid;
 }

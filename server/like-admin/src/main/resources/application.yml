@@ -96,7 +96,8 @@ sa-token:
 # 美甲 AI 配置：敏感信息只从环境变量注入
 nail:
   creation-bridge:
-    admin-login-url: ${NAIL_CREATION_BRIDGE_ADMIN_LOGIN_URL:http://127.0.0.1:5173/login}
+    admin-login-url: ${NAIL_CREATION_BRIDGE_ADMIN_LOGIN_URL:http://127.0.0.1:8082/admin/index.html#/login}
+    admin-ai-url: ${NAIL_CREATION_BRIDGE_ADMIN_AI_URL:http://127.0.0.1:8082/admin/index.html#/nail/ai}
     public-ai-url: ${NAIL_CREATION_BRIDGE_PUBLIC_AI_URL:http://127.0.0.1:8082/nail-site/AI.html}
     ticket-ttl-seconds: ${NAIL_CREATION_BRIDGE_TICKET_TTL_SECONDS:600}
   asset:
@@ -110,5 +111,37 @@ nail:
     prompt-template-version: ${NAIL_PROMPT_TEMPLATE_VERSION:nail-designer-v2}
     volcengine:
       api-key: ${VOLC_ARK_API_KEY:}
-      model: ${VOLC_ARK_MODEL:doubao-seedream-4-0-250828}
+      # 默认使用 Seedream 5.0 Pro（配额已恢复）；切换模型只需改 VOLC_ARK_MODEL 或下方默认值：
+      #   5.0 Pro  ep-20260814004823-6kd24（当前默认，质量最高）
+      #   5.0 Lite ep-20260814005153-f6fcg（更快更省，质量稍低）
+      #   4.5      ep-20260814005244-8dwk6
+      #   4.0      ep-20260814005309-bnl9h
+      model: ${VOLC_ARK_MODEL:ep-20260814004823-6kd24}
       base-url: ${VOLC_ARK_BASE_URL:https://ark.cn-beijing.volces.com/api/v3}
+      # 注意：Seedream 5.0 端点不支持 guidance_scale，此值当前不生效，仅保留给兼容模型使用。
+      guidance-scale: ${VOLC_ARK_GUIDANCE_SCALE:4.0}
+      # 提示词优化：必须为 true——实测 4.x 端点不接受 false（会 400 拒绝）。
+      optimize-prompt: ${VOLC_ARK_OPTIMIZE_PROMPT:true}
+      # 提示词风格档案：auto 自动识别 / seedream-4 / seedream-4-5 / seedream-5-lite / seedream-5-pro
+      prompt-profile: ${VOLC_ARK_PROMPT_PROFILE:seedream-5-pro}
+      fallback-models: ${VOLC_ARK_FALLBACK_MODELS:ep-20260814005244-8dwk6,ep-20260814005309-bnl9h}
+    # 出图后处理：轻量锐化（不影响生成质量，只增强边缘观感）
+    postprocess:
+      enabled: ${NAIL_AI_POSTPROCESS_ENABLED:true}
+      sharpen-amount: ${NAIL_AI_SHARPEN_AMOUNT:0.35}
+    # 云美学打分（智谱 GLM 免费视觉模型）：注册 open.bigmodel.cn 拿 Key 后设置 NAIL_AI_AESTHETIC_API_KEY 即启用
+    aesthetic:
+      enabled: ${NAIL_AI_AESTHETIC_ENABLED:false}
+      # zhipu（智谱 GLM，默认）| ark（火山豆包视觉，需买服务包）
+      provider: ${NAIL_AI_AESTHETIC_PROVIDER:zhipu}
+      api-key: ${NAIL_AI_AESTHETIC_API_KEY:}
+      base-url: ${NAIL_AI_AESTHETIC_BASE_URL:https://open.bigmodel.cn/api/paas/v4}
+      # 默认 glm-4v-flash：非推理模型，直接输出数字，稳定秒回；
+      # 也可换 glm-4.6v-flash（更强但推理链长，需更大 max_tokens）。
+      vision-model: ${NAIL_AI_AESTHETIC_VISION_MODEL:glm-4v-flash}
+      score-prompt: ${NAIL_AI_AESTHETIC_SCORE_PROMPT:对这张美甲效果图按美学质量打分（1-10分，保留一位小数），只返回一个数字。}
+      timeout-seconds: ${NAIL_AI_AESTHETIC_TIMEOUT:90}
+  redis-auto-start:
+    # 后端启动后自动拉起本地 Redis（开发环境兜底）
+    enabled: ${NAIL_REDIS_AUTO_START:true}
+    server-path: ${NAIL_REDIS_SERVER_PATH:C:/Users/15367/AppData/Local/Microsoft/WinGet/Packages/taizod1024.redis-windows-fork_Microsoft.Winget.Source_8wekyb3d8bbwe/Redis-8.8.0-Windows-x64-msys2/redis-server.exe}

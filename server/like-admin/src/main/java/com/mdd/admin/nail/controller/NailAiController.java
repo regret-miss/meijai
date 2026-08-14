@@ -2,7 +2,9 @@ package com.mdd.admin.nail.controller;
 
 import com.mdd.admin.LikeAdminThreadLocal;
 import com.mdd.admin.nail.dto.NailGenerateRequest;
+import com.mdd.admin.nail.dto.NailResultDeleteRequest;
 import com.mdd.admin.nail.dto.NailResultReviewRequest;
+import com.mdd.admin.nail.dto.NailTaskDeleteRequest;
 import com.mdd.admin.nail.dto.NailTaskRenameRequest;
 import com.mdd.admin.nail.service.NailAiTaskService;
 import com.mdd.admin.validate.commons.PageValidate;
@@ -26,7 +28,8 @@ public class NailAiController {
 
     @GetMapping("/task/list")
     public AjaxResult<PageResult<Map<String, Object>>> list(@Validated PageValidate page, String status, String keyword, String taskType) {
-        return AjaxResult.success(taskService.list(page, status, keyword, taskType));
+        Integer creatorId = LikeAdminThreadLocal.isNailMember() ? LikeAdminThreadLocal.getAdminId() : null;
+        return AjaxResult.success(taskService.list(page, status, keyword, taskType, creatorId));
     }
 
     @GetMapping("/task/detail")
@@ -40,6 +43,18 @@ public class NailAiController {
     @PostMapping("/result/reject")
     public AjaxResult<Object> reject(@Validated @RequestBody NailResultReviewRequest request) {
         taskService.reject(request.getId(), request.getNote(), LikeAdminThreadLocal.getAdminId());
+        return AjaxResult.success();
+    }
+
+    @PostMapping("/result/delete")
+    public AjaxResult<Object> deleteResult(@Validated @RequestBody NailResultDeleteRequest request) {
+        taskService.deleteResult(request.getId(), LikeAdminThreadLocal.getAdminId());
+        return AjaxResult.success();
+    }
+
+    @PostMapping("/task/delete")
+    public AjaxResult<Object> deleteTask(@Validated @RequestBody NailTaskDeleteRequest request) {
+        taskService.deleteTask(request.getId(), LikeAdminThreadLocal.getAdminId());
         return AjaxResult.success();
     }
 

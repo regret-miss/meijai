@@ -2,11 +2,14 @@ package com.mdd.admin.nail.provider;
 
 import com.volcengine.ark.runtime.model.images.generation.GenerateImagesRequest;
 import com.volcengine.ark.runtime.model.images.generation.ImagesResponse;
+import com.volcengine.ark.runtime.exception.ArkHttpException;
 import com.volcengine.ark.runtime.service.ArkService;
 import com.mdd.admin.nail.config.NailAiProperties;
 import com.mdd.common.exception.OperateException;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.PreDestroy;
 import java.net.URI;
@@ -14,11 +17,15 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.Base64;
+import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
 
 @Component
 public class VolcengineNailImageProvider implements NailImageProvider {
+    private static final Logger log = LoggerFactory.getLogger(VolcengineNailImageProvider.class);
     private final NailAiProperties properties;
     private final HttpClient httpClient = HttpClient.newBuilder().connectTimeout(Duration.ofSeconds(15)).build();
     private volatile ArkService arkService;
@@ -39,18 +46,41 @@ public class VolcengineNailImageProvider implements NailImageProvider {
     public GeneratedImage generate(NailGenerationCommand command) {
         validateConfiguration();
         NailAiProperties.Volcengine config = properties.getVolcengine();
+        String lastError = "无可用模型";
+        for (String model : modelCandidates(config, command.model())) {
+            try {
+                return generateWithModel(command, config, model);
+            } catch (OperateException e) {
+                // BaseException 未调用 super(msg)，getMessage() 恒为 null，必须读 getMsg()
+                lastError = e.getMsg() == null ? e.getClass().getSimpleName() : e.getMsg();
+                log.warn("美甲生成模型 {} 失败，降级尝试下一个候选模型：{}", model, lastError);
+            }
+        }
+        throw new OperateException("所有美甲生成模型均失败：" + lastError);
+    }
+
+    private GeneratedImage generateWithModel(NailGenerationCommand command, NailAiProperties.Volcengine config, String model) {
+        int seed = command.seed() > 0 ? (int) Math.floorMod(command.seed(), Integer.MAX_VALUE) : randomSeed();
+        if (seed <= 0) seed = randomSeed();
         GenerateImagesRequest.Builder builder = GenerateImagesRequest.builder()
-                .model(config.getModel())
+                .model(model)
                 .prompt(command.prompt())
                 .size(resolveSize(command.aspectRatio(), command.resolution()))
                 .responseFormat("b64_json")
-                .guidanceScale(5.5)
-                .sequentialImageGeneration("disabled")
+                .optimizePrompt(config.isOptimizePrompt())
+                .seed(seed)
                 .stream(false)
                 .watermark(false);
-        if (command.referenceImage() != null) {
-            String dataUri = "data:" + command.referenceMimeType() + ";base64," + Base64.getEncoder().encodeToString(command.referenceImage());
-            builder.image(dataUri);
+        // 注意：Seedream 5.0 系列端点不支持 guidance_scale 与 sequential_image_generation，
+        // 传了会直接 400，故不再发送这两个参数（4.x 也无需它们即可出图）。
+        if (command.referenceImages() != null && !command.referenceImages().isEmpty()) {
+            List<String> dataUris = new ArrayList<>();
+            for (int i = 0; i < command.referenceImages().size(); i++) {
+                String mime = command.referenceMimeTypes() != null && i < command.referenceMimeTypes().size()
+                        ? command.referenceMimeTypes().get(i) : "image/png";
+                dataUris.add("data:" + mime + ";base64," + Base64.getEncoder().encodeToString(command.referenceImages().get(i)));
+            }
+            builder.image(dataUris);
         }
 
         try {
@@ -70,10 +100,34 @@ public class VolcengineNailImageProvider implements NailImageProvider {
             throw new OperateException("火山方舟返回的图片内容为空");
         } catch (OperateException e) {
             throw e;
+        } catch (ArkHttpException e) {
+            // 火山 API 明确报错（如 429 限额、400 参数错误）：透传真实 code 与消息，避免被吞掉
+            StringBuilder detail = new StringBuilder("HTTP ").append(e.statusCode).append(" [").append(e.code).append("]");
+            if (e.getMessage() != null && !e.getMessage().isBlank()) {
+                detail.append(" ").append(e.getMessage());
+            }
+            if (e.requestId != null && !e.requestId.isBlank()) {
+                detail.append(" (requestId=").append(e.requestId).append(")");
+            }
+            throw new OperateException("火山图片生成失败：" + detail);
         } catch (Exception e) {
             String message = e.getMessage() == null ? e.getClass().getSimpleName() : e.getMessage();
+            log.warn("火山图片生成请求异常（模型 {}）：{}", model, message, e);
             throw new OperateException("火山图片生成失败：" + message);
         }
+    }
+
+    private List<String> modelCandidates(NailAiProperties.Volcengine config, String requestedModel) {
+        List<String> models = new ArrayList<>();
+        models.add(StringUtils.hasText(requestedModel) ? requestedModel.trim() : config.getModel());
+        if (config.getFallbackModels() != null) {
+            for (String fallback : config.getFallbackModels()) {
+                if (StringUtils.hasText(fallback) && !models.contains(fallback)) {
+                    models.add(fallback);
+                }
+            }
+        }
+        return models;
     }
 
     @Override
@@ -117,17 +171,17 @@ public class VolcengineNailImageProvider implements NailImageProvider {
         throw new OperateException("火山方舟返回的内容不是受支持的 PNG 或 JPG 图片");
     }
 
+    private int randomSeed() {
+        return ThreadLocalRandom.current().nextInt(1, Integer.MAX_VALUE);
+    }
+
     private String resolveSize(String ratio, String resolution) {
-        Map<String, String> oneHalfK = Map.of(
-                "1:1", "1536x1536", "16:9", "1920x1080", "9:16", "1080x1920", "4:3", "1728x1296",
-                "3:4", "1296x1728", "3:2", "1872x1248", "2:3", "1248x1872", "21:9", "2016x864");
         Map<String, String> twoK = Map.of(
                 "1:1", "2048x2048", "16:9", "2560x1440", "9:16", "1440x2560", "4:3", "2304x1728",
                 "3:4", "1728x2304", "3:2", "2496x1664", "2:3", "1664x2496", "21:9", "3024x1296");
-        Map<String, String> fourK = Map.of(
-                "1:1", "4096x4096", "16:9", "4096x2304", "9:16", "2304x4096", "4:3", "4096x3072",
-                "3:4", "3072x4096", "3:2", "4096x2736", "2:3", "2736x4096", "21:9", "4096x1752");
-        if ("1.5K".equals(resolution)) return oneHalfK.getOrDefault(ratio, "1536x1536");
-        return "4K".equals(resolution) ? fourK.getOrDefault(ratio, "4096x4096") : twoK.getOrDefault(ratio, "2048x2048");
+        // 实测约束：Seedream 5.0 端点图像面积必须 ≥ 3,686,400 且 ≤ 4,624,220 像素。
+        // 1.5K 档（如 1536x1536）低于下限会被 400 拒绝；4K 档（4096 起）超上限也会被拒。
+        // 因此 1.5K / 4K 一律按 2K 档处理（2048 级别均在合法区间内）。
+        return twoK.getOrDefault(ratio, "2048x2048");
     }
 }

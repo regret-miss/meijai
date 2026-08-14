@@ -4,10 +4,12 @@ import com.mdd.admin.nail.storage.NailAssetStorage;
 import com.mdd.common.entity.nail.NailAiResult;
 import com.mdd.common.entity.nail.NailAsset;
 import com.mdd.common.entity.nail.NailAssetAudit;
+import com.mdd.common.entity.nail.NailStyleReference;
 import com.mdd.common.exception.OperateException;
 import com.mdd.common.mapper.nail.NailAiResultMapper;
 import com.mdd.common.mapper.nail.NailAssetAuditMapper;
 import com.mdd.common.mapper.nail.NailAssetMapper;
+import com.mdd.common.mapper.nail.NailStyleReferenceMapper;
 import com.mdd.common.util.TimeUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -22,6 +24,7 @@ public class NailMediaService {
     @Resource private NailAssetMapper assetMapper;
     @Resource private NailAiResultMapper resultMapper;
     @Resource private NailAssetAuditMapper auditMapper;
+    @Resource private NailStyleReferenceMapper styleReferenceMapper;
 
     public MediaFile read(String type, long id, String variant, boolean download, long expires, String signature) {
         String safeVariant = normalizeVariant(variant);
@@ -29,6 +32,7 @@ public class NailMediaService {
         try {
             if ("asset".equals(type)) return readAsset(Math.toIntExact(id), safeVariant, download);
             if ("result".equals(type)) return readResult(id, download);
+            if ("style".equals(type)) return readStyle(Math.toIntExact(id), safeVariant, download);
             throw new OperateException("不支持的媒体类型");
         } catch (IOException error) {
             throw new OperateException("图片文件读取失败");
@@ -51,6 +55,16 @@ public class NailMediaService {
         NailAiResult result = resultMapper.selectById(id);
         if (result == null) throw new OperateException("生成结果不存在");
         return new MediaFile(storage.read(result.getUri()), result.getMimeType(), "nail-ai-result-" + id + extension(result.getMimeType()), download);
+    }
+
+    private MediaFile readStyle(Integer id, String variant, boolean download) throws IOException {
+        NailStyleReference ref = styleReferenceMapper.selectById(id);
+        if (ref == null || Integer.valueOf(1).equals(ref.getIsDelete()) || !"ACTIVE".equals(ref.getStatus())) {
+            throw new OperateException("风格母版不存在或不可预览");
+        }
+        String uri = ref.getUri();
+        if (!download && "600".equals(variant) && StringUtils.hasText(ref.getThumbUri())) uri = ref.getThumbUri();
+        return new MediaFile(storage.read(uri), ref.getMimeType(), safeFileName(ref.getName(), ref.getMimeType()), download);
     }
 
     private void audit(Integer assetId, String action, String detail, int operatorId) {

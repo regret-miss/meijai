@@ -20,7 +20,7 @@
       </a>
       <span class="header-note">登录创作</span>
       <nav class="site-nav" id="siteNav" aria-label="主导航">
-        <a href="首页.html">首页</a><a href="美甲款式.html">美甲款式</a><a href="美甲师.html">美甲师</a><a href="AI.html">AI 创作</a><a href="会员福利.html">会员福利</a><a href="首页.html#contact">联系我们</a><span class="nav-indicator" id="navIndicator" aria-hidden="true"></span>
+        <a href="首页.html">首页</a><a href="美甲款式.html">美甲款式</a><a href="美甲师.html">美甲师</a><a href="会员福利.html">会员福利</a><a href="首页.html#contact">联系我们</a><span class="nav-indicator" id="navIndicator" aria-hidden="true"></span>
       </nav>
       <button class="nav-menu" id="navMenu" type="button" aria-label="打开导航" aria-expanded="false"><span></span></button>
     </div>
@@ -52,10 +52,7 @@
         </button>
       </div>
 
-      <div class="saved-brief" id="savedBrief" hidden>
-        <span>已留存的设计意图</span>
-        <p id="savedBriefText"></p>
-      </div>
+
 
       <form class="member-login-form" id="memberLoginForm" novalidate data-role="USER">
         <div class="member-field">
@@ -99,20 +96,13 @@
       const submit = document.getElementById("memberLoginSubmit");
       const message = document.getElementById("memberLoginMessage");
       const context = document.getElementById("loginContext");
-      const savedBrief = document.getElementById("savedBrief");
-      const savedBriefText = document.getElementById("savedBriefText");
       const identityButtons = [...document.querySelectorAll("[data-role]")];
       const redirectParam = new URLSearchParams(location.search).get("redirect");
-      const redirect = redirectParam && /^[\w\u4e00-\u9fa5./-]+(?:\?.*)?$/.test(redirectParam) ? redirectParam : "AI.html";
+      const redirect = redirectParam && /^[\w\u4e00-\u9fa5./-]+(?:\?.*)?$/.test(redirectParam) ? redirectParam : "";
       const accountKey = "xiang-nail-login-account";
       let captchaUuid = "";
-
-      const pending = window.NailMemberAuth.peekPrompt();
-      if (pending) {
-        savedBrief.hidden = false;
-        savedBriefText.textContent = pending;
-        context.textContent = "你的设计意图已经妥善留存，登录后将自动回填。";
-      }
+      const adminUrl = location.protocol === "file:" ? "http://127.0.0.1:8082/admin/index.html#/" : location.origin + "/admin/index.html#/";
+      const targetFor = function (role) { return role === "ADMIN" ? adminUrl : (redirect || "首页.html"); };
 
       try {
         const stored = JSON.parse(localStorage.getItem(accountKey) || "null");
@@ -151,9 +141,7 @@
         captcha.hidden = !isAdmin;
         code.required = isAdmin;
         username.placeholder = isAdmin ? "请输入管理员账号" : "请输入用户账号";
-        context.textContent = pending
-          ? "你的设计意图已经妥善留存，登录后将自动回填。"
-          : isAdmin ? "验证运营管理身份，登录后继续本次 AI 创作。" : "登录用户账号，继续进入 AI 美甲设计工作台。";
+        context.textContent = isAdmin ? "验证运营管理身份，登录后继续本次 AI 创作。" : "登录用户账号，继续进入 AI 美甲设计工作台。";
         identityButtons.forEach(button => {
           const active = button.dataset.role === role;
           button.classList.toggle("is-active", active);
@@ -176,9 +164,9 @@
       try {
         const session = await window.NailMemberAuth.session();
         if (session?.loggedIn) {
-          message.textContent = `${session.roleName || "账号"}身份有效，正在返回创作台`;
+          message.textContent = (session.roleName || "账号") + "身份有效，正在进入";
           message.classList.add("is-success");
-          location.replace(redirect);
+          location.replace(targetFor(session.role));
           return;
         }
       } catch {
@@ -217,9 +205,9 @@
           });
           if (remember.checked) localStorage.setItem(accountKey, JSON.stringify({ username: username.value.trim() }));
           else localStorage.removeItem(accountKey);
-          message.textContent = `${session.roleName || "账号"}登录成功，正在恢复设计意图`;
+          message.textContent = (session.roleName || "账号") + "登录成功，正在进入";
           message.classList.add("is-success");
-          location.replace(redirect);
+          location.replace(targetFor(session.role));
         } catch (error) {
           message.textContent = error.message || "登录失败，请检查账号和密码";
           if (role === "ADMIN") {

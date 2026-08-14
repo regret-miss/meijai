@@ -76,6 +76,15 @@
                     </div>
                     <div class="trend-grid">
                         <button
+                            type="button"
+                            :class="{ active: form.trendPreset === 'CUSTOM' }"
+                            @click="form.trendPreset = 'CUSTOM'"
+                        >
+                            <span class="swatches"><i style="background:#e0e0e0"></i><i style="background:#f0f0f0"></i><i style="background:#ffffff"></i></span>
+                            <b>自由发挥</b>
+                            <small>不选趋势，自由描述</small>
+                        </button>
+                        <button
                             v-for="trend in trends"
                             :key="trend.value"
                             type="button"
@@ -85,6 +94,34 @@
                             <span class="swatches"><i v-for="color in trend.colors" :key="color" :style="{ background: color }"></i></span>
                             <b>{{ trend.label }}</b>
                             <small>{{ trend.note }}</small>
+                        </button>
+                    </div>
+                </section>
+
+                <section class="style-reference-section" v-if="styleReferences.length">
+                    <div class="section-heading">
+                        <div><span>STYLE REFERENCES</span><h3>风格母版</h3></div>
+                        <small>选择风格母版锚定质感、光影与构图</small>
+                    </div>
+                    <div class="style-reference-grid">
+                        <button
+                            type="button"
+                            :class="{ active: !form.styleReferenceId }"
+                            @click="form.styleReferenceId = undefined"
+                        >
+                            <span class="style-thumb empty"><icon name="el-icon-Close" /></span>
+                            <b>不使用</b>
+                        </button>
+                        <button
+                            v-for="ref in styleReferences"
+                            :key="ref.id"
+                            type="button"
+                            :class="{ active: form.styleReferenceId === ref.id }"
+                            @click="form.styleReferenceId = ref.id"
+                        >
+                            <img class="style-thumb" :src="ref.thumbUrl" :alt="ref.name" loading="lazy" />
+                            <b>{{ ref.name }}</b>
+                            <small>{{ ref.category }}</small>
                         </button>
                     </div>
                 </section>
@@ -127,6 +164,18 @@
                     <em>同源工作流</em>
                 </div>
 
+                <section class="settings-section model-section">
+                    <div class="settings-group wide">
+                        <label>模型选择</label>
+                        <el-select v-model="form.model" placeholder="选择生成模型">
+                            <el-option label="Seedream 5.0 Pro（推荐）" value="ep-20260814004823-6kd24" />
+                            <el-option label="Seedream 5.0 Lite" value="ep-20260814005153-f6fcg" />
+                            <el-option label="Seedream 4.5" value="ep-20260814005244-8dwk6" />
+                            <el-option label="Seedream 4.0" value="ep-20260814005309-bnl9h" />
+                        </el-select>
+                    </div>
+                </section>
+
                 <section class="settings-section">
                     <div class="settings-group">
                         <label>甲型</label>
@@ -158,7 +207,7 @@
                     </div>
                     <div class="output-setting">
                         <label>清晰度</label>
-                        <el-radio-group v-model="form.resolution"><el-radio-button label="1.5K">标准 1.5K</el-radio-button><el-radio-button label="2K">高清 2K</el-radio-button><el-radio-button label="4K">超清 4K</el-radio-button></el-radio-group>
+                        <el-radio-group v-model="form.resolution"><el-radio-button label="2K">高清 2K</el-radio-button></el-radio-group>
                     </div>
                     <div class="output-setting output-count-setting">
                         <label>方案数量</label>
@@ -198,11 +247,12 @@
 <script lang="ts" setup name="nailAi">
 import { computed, onMounted, reactive, ref } from 'vue'
 import type { UploadFile } from 'element-plus'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import TaskRail from './components/TaskRail.vue'
 import {
     nailAssetList,
     nailAssetUpload,
+    nailStyleReferencePublicList,
     nailTaskCreate,
     nailTaskList,
     type NailAsset,
@@ -210,10 +260,13 @@ import {
     type NailTaskSummary
 } from '@/api/nail'
 import feedback from '@/utils/feedback'
+import request from '@/utils/request'
 
 const router = useRouter()
+const route = useRoute()
 const tasks = ref<NailTaskSummary[]>([])
 const assets = ref<NailAsset[]>([])
+const styleReferences = ref<any[]>([])
 const reference = ref<NailAsset>()
 const taskLoading = ref(false)
 const assetLoading = ref(false)
@@ -225,8 +278,9 @@ const referenceUploading = ref(false)
 const defaults: NailGeneratePayload = {
     taskType: 'TEXT_TO_IMAGE', prompt: '', creativeMode: 'ON_HAND', nailShape: 'SHORT_ALMOND',
     finish: 'VELVET_CAT_EYE', designStyle: 'QUIET_LUXURY', layoutStyle: 'TWO_ACCENTS',
-    trendPreset: 'ROSE_VELVET', referenceStrategy: 'REINTERPRET', colorPalette: '烟粉、冷银、奶白',
-    aspectRatio: '1:1', resolution: '2K', outputCount: 2
+    trendPreset: 'CUSTOM', referenceStrategy: 'REINTERPRET', colorPalette: '烟粉、冷银、奶白',
+    aspectRatio: '1:1', resolution: '2K', outputCount: 2,
+    model: 'ep-20260814004823-6kd24', styleReferenceId: undefined
 }
 const form = reactive<NailGeneratePayload>({ ...defaults })
 
@@ -239,21 +293,35 @@ const trends = [
     { value: 'SEA_GLASS' as const, label: '海盐玻璃', note: '雾蓝透色 · 冰玻璃光', colors: ['#86aeb1', '#dce6e5', '#c4d0d2'], palette: '雾蓝、海盐白、透明玻璃', finish: 'JELLY' as const },
     { value: 'BUTTER_MICRO_FRENCH' as const, label: '奶油微法式', note: '柔奶黄 · 极细法式边', colors: ['#ddc46f', '#f1eddf', '#d7c39e'], palette: '柔奶黄、象牙白、浅沙色', finish: 'MICRO_FRENCH' as const },
     { value: 'MIXED_METAL' as const, label: '混合金属', note: '冷银交错 · 镜面细节', colors: ['#b4b8ba', '#9d8858', '#303236'], palette: '冷银、钛灰、少量香槟金', finish: 'CHROME' as const },
-    { value: 'AURORA_MAGNETIC' as const, label: '极光磁场', note: '冷紫偏光 · 深层磁吸', colors: ['#756c9f', '#839fb1', '#d6d2e1'], palette: '雾紫、冰蓝、珍珠白', finish: 'VELVET_CAT_EYE' as const }
+    { value: 'AURORA_MAGNETIC' as const, label: '极光磁场', note: '冷紫偏光 · 深层磁吸', colors: ['#756c9f', '#839fb1', '#d6d2e1'], palette: '雾紫、冰蓝、珍珠白', finish: 'VELVET_CAT_EYE' as const },
+    { value: 'JADE_CAT_EYE' as const, label: '翡翠猫眼', note: '翡翠绿 · 玻璃珠光', colors: ['#3f7d6a', '#a8d0c0', '#e6efe8'], palette: '翡翠绿、水晶透、奶白', finish: 'VELVET_CAT_EYE' as const },
+    { value: 'MINT_FRENCH' as const, label: '薄荷法式', note: '薄荷绿 · 细法式边', colors: ['#9fd8c4', '#eaf6f0', '#c9d2d6'], palette: '薄荷绿、透白、银灰', finish: 'MICRO_FRENCH' as const },
+    { value: 'LACE_NAILS' as const, label: '蕾丝美甲', note: '奶白蕾丝 · 浪漫细纹', colors: ['#f2ece4', '#e8c8c9', '#faf6f0'], palette: '奶白、裸粉、米白', finish: 'SCULPTED_GEL' as const },
+    { value: 'REVERSE_FRENCH' as const, label: '半月法式', note: '反向法式 · 根部半月', colors: ['#c58b83', '#e5c9bf', '#f5efe8'], palette: '豆沙、裸色、奶白', finish: 'FRENCH_TIP' as const },
+    { value: 'LEOPARD_PRINT' as const, label: '豹纹', note: '焦糖豹纹 · 克制野性', colors: ['#b07a4a', '#e8d5b7', '#5a3d2b'], palette: '焦糖、奶油、深棕', finish: 'GLOSSY_GEL' as const },
+    { value: 'METALLIC_FRENCH' as const, label: '金属法式', note: '冷银 · 金属法式边', colors: ['#aeb2b5', '#8d7b8f', '#2c2e32'], palette: '冷银、灰紫、金属', finish: 'CHROME' as const },
+    { value: 'MILKY_WHITE' as const, label: '白月光奶白', note: '奶白 · 高光珍珠', colors: ['#f5efe6', '#fbf8f3', '#e8dfd3'], palette: '奶白、珍珠白、乳白', finish: 'GLOSSY_GEL' as const },
+    { value: 'SUNSET_OMBRE' as const, label: '落日渐变', note: '珊瑚到薰衣草 · 渐变', colors: ['#e89a7a', '#f2c6a8', '#b9a7c9'], palette: '珊瑚橘、蜜桃、薰衣草', finish: 'OMBRE' as const }
 ]
 const nailShapes = [
     { value: 'SHORT_ALMOND', label: '短杏仁' }, { value: 'SHORT_SQUOVAL', label: '短方圆' },
-    { value: 'ALMOND', label: '杏仁' }, { value: 'SQUARE', label: '方形' }, { value: 'COFFIN', label: '芭蕾' }
+    { value: 'ALMOND', label: '杏仁' }, { value: 'SQUARE', label: '方形' }, { value: 'COFFIN', label: '芭蕾' },
+    { value: 'ROUND', label: '圆形' }, { value: 'STILETTO', label: '尖形' }, { value: 'LIPSTICK', label: '唇形' }
 ]
 const finishes = [
     { value: 'VELVET_CAT_EYE', label: '丝绒猫眼' }, { value: 'JELLY', label: '果冻透色' },
     { value: 'CHROME', label: '镜面铬光' }, { value: 'MICRO_FRENCH', label: '微法式' },
-    { value: 'AURA', label: '晕染光圈' }, { value: 'SCULPTED_GEL', label: '立体凝胶' }, { value: 'GLOSSY_GEL', label: '高亮凝胶' }
+    { value: 'AURA', label: '晕染光圈' }, { value: 'SCULPTED_GEL', label: '立体凝胶' }, { value: 'GLOSSY_GEL', label: '高亮凝胶' },
+    { value: 'FRENCH_TIP', label: '经典法式' }, { value: 'MILK_BATH', label: '牛奶浴' },
+    { value: 'OMBRE', label: '渐变' }, { value: 'GLITTER', label: '满钻闪粉' }, { value: 'PEARL', label: '珍珠' }
 ]
 const designStyles = [
     { value: 'QUIET_LUXURY', label: '克制高级' }, { value: 'KOREAN_CLEAR', label: '韩系清透' },
     { value: 'RUNWAY', label: '秀场前卫' }, { value: 'FUTURISTIC', label: '未来机能' },
-    { value: 'ROMANTIC', label: '细腻浪漫' }, { value: 'SWEET_COOL', label: '甜酷混搭' }
+    { value: 'ROMANTIC', label: '细腻浪漫' }, { value: 'SWEET_COOL', label: '甜酷混搭' },
+    { value: 'MINIMALIST', label: '极简主义' }, { value: 'Y2K', label: '千禧复古' },
+    { value: 'COQUETTE', label: '甜心蝴蝶结' }, { value: 'OLD_MONEY', label: '老钱风' },
+    { value: 'DOPAMINE', label: '多巴胺' }, { value: 'MORANDI', label: '莫兰迪' }
 ]
 const layouts = [
     { value: 'UNIFIED', label: '十指统一' }, { value: 'TWO_ACCENTS', label: '两枚重点甲' },
@@ -328,7 +396,25 @@ const submit = async () => {
     } finally { submitting.value = false }
 }
 
-onMounted(() => { loadTasks(); loadAssets() })
+const restoreCreationIntent = async () => {
+    const ticket = route.query.creation_ticket
+    const prompt = route.query.prompt
+    if (typeof prompt === 'string' && prompt.trim()) {
+        form.prompt = prompt.trim()
+        return
+    }
+    if (typeof ticket === 'string' && ticket) {
+        try {
+            const data = await request.get({ url: '/nail/creation-bridge/consume?ticket=' + encodeURIComponent(ticket) }, { withToken: false })
+            if (data?.prompt) form.prompt = data.prompt
+        } catch {}
+    }
+}
+
+onMounted(() => { loadTasks(); loadAssets(); loadStyleReferences(); restoreCreationIntent() })
+const loadStyleReferences = async () => {
+    try { styleReferences.value = await nailStyleReferencePublicList() } catch {}
+}
 </script>
 
 <style lang="scss" scoped>
@@ -393,6 +479,15 @@ onMounted(() => { loadTasks(); loadAssets() })
 .trend-grid b, .trend-grid small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .trend-grid b { color: #34373d; font-size: 11px; }
 .trend-grid small { margin-top: 3px; color: #979ca4; font-size: 9px; }
+.style-reference-section { padding: 18px 34px 20px; border-top: 1px solid #eaecf0; }
+.style-reference-grid { display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: 8px; }
+.style-reference-grid button { min-width: 0; padding: 10px; border: 1px solid #e0e3e8; border-radius: 10px; background: #fff; text-align: left; }
+.style-reference-grid button.active { border-color: #b97987; box-shadow: inset 0 0 0 1px #b97987; }
+.style-thumb { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 7px; margin-bottom: 9px; background: #f1f3f5; }
+.style-thumb.empty { display: grid; place-items: center; color: #c0c4cc; font-size: 18px; }
+.style-reference-grid b, .style-reference-grid small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.style-reference-grid b { color: #34373d; font-size: 11px; }
+.style-reference-grid small { margin-top: 3px; color: #979ca4; font-size: 9px; }
 .composer-actions { display: grid; grid-template-columns: minmax(0,1fr) 260px; gap: 10px; padding: 14px 18px; border-top: 1px solid #e2e5e9; background: #f7f8fa; }
 .settings-button, .generate-button { display: flex; align-items: center; border-radius: 11px; text-align: left; }
 .settings-button { gap: 11px; padding: 11px 14px; border: 1px solid #dfe2e7; background: #fff; color: #555b64; }
@@ -404,6 +499,11 @@ onMounted(() => { loadTasks(); loadAssets() })
 .generate-button span { display: grid; gap: 1px; }
 .generate-button small { color: #c6c9ce; font-size: 9px; }
 .generate-button b { font-size: 13px; font-weight: 600; }
+.model-section { padding: 14px; border: 1px solid #ece7e5; border-radius: 12px; background: #faf8f7; }
+.model-section :deep(.el-select) { width: 100%; }
+.model-section :deep(.el-input__wrapper) { min-height: 40px; border: 1px solid #e3dfdc; border-radius: 9px; background: #fff; box-shadow: none!important; }
+.model-section :deep(.el-input__wrapper:hover) { border-color: #c9a5ad; }
+.model-section :deep(.el-input__wrapper.is-focus) { border-color: #a66d78; box-shadow: 0 0 0 3px rgba(166,109,120,.08)!important; }
 .settings-sheet { display: grid; gap: 20px; }
 .settings-engine { display: grid; grid-template-columns: 44px minmax(0,1fr) auto; align-items: center; gap: 12px; padding: 12px 14px; border: 1px solid #ece7e5; border-radius: 12px; background: #f8f6f5; }
 .settings-engine > span { display: grid; width: 44px; height: 44px; place-items: center; border: 1px solid #eadcdf; border-radius: 10px; background: #fff; color: #a66d78; font-size: 18px; }

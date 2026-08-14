@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory, RouterView, type RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHashHistory, RouterView, type RouteRecordRaw } from 'vue-router'
 import { MenuEnum } from '@/enums/appEnums'
 import { isExternal } from '@/utils/validate'
 import { constantRoutes, INDEX_ROUTE_NAME, LAYOUT } from './routes'
@@ -103,7 +103,7 @@ export function resetRouter() {
 }
 
 const router = createRouter({
-    history: createWebHistory(import.meta.env.BASE_URL),
+    history: createWebHashHistory(),
     routes: constantRoutes
 })
 

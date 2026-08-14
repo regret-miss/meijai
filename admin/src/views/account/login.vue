@@ -54,7 +54,7 @@ import { computed, onMounted, reactive, ref, shallowRef } from 'vue'
 import type { InputInstance, FormInstance } from 'element-plus'
 import cache from '@/utils/cache'
 import request from '@/utils/request'
-import { ACCOUNT_KEY } from '@/enums/cacheEnums'
+import { ACCOUNT_KEY, TOKEN_KEY } from '@/enums/cacheEnums'
 import { useLockFn } from '@/hooks/useLockFn'
 
 const passwordRef = shallowRef<InputInstance>()
@@ -95,12 +95,18 @@ const handleLogin = async () => {
     await formRef.value?.validate()
     cache.set(ACCOUNT_KEY, { remember: remAccount.value, account: remAccount.value ? formData.account : '' })
     try {
-        await request.post({
-        url: '/nail/auth/login',
+        const data = await request.post({
+            url: '/nail/auth/login',
             params: { username: formData.account, password: formData.password, code: formData.code, uuid: formData.uuid }
         }, { withToken: false })
+        if (data?.role === 'ADMIN' && data?.adminToken) {
+            cache.set(TOKEN_KEY, data.adminToken)
+        }
         if (await finishBridge()) return
-        window.location.assign(`${location.protocol}//${location.hostname}:8082/nail-site/AI.html`)
+        const target = data?.role === 'ADMIN'
+            ? `${location.protocol}//${location.hostname}:8082/admin/index.html#/`
+            : `${location.protocol}//${location.hostname}:8082/nail-site/首页.html`
+        window.location.assign(target)
     } catch (error) {
         formData.code = ''
         await getLoginCaptcha()

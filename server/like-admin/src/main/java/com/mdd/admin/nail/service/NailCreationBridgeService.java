@@ -79,7 +79,8 @@ public class NailCreationBridgeService {
         RedisUtils.set(key(ticket), payload, properties.getTicketTtlSeconds());
 
         Map<String, Object> result = new LinkedHashMap<>();
-        result.put("returnUrl", appendTicket(properties.getPublicAiUrl(), ticket));
+        String returnBaseUrl = "ADMIN".equals(role) ? properties.getAdminAiUrl() : properties.getPublicAiUrl();
+        result.put("returnUrl", appendTicket(returnBaseUrl, ticket));
         return result;
     }
 

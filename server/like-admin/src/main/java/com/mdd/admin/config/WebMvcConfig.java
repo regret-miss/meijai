@@ -75,8 +75,10 @@ public class WebMvcConfig implements WebMvcConfigurer {
      */
     @Override
     public void addViewControllers(@NotNull ViewControllerRegistry registry) {
-        registry.addRedirectViewController("/nail-site", "/nail-site/首页.html");
-        registry.addRedirectViewController("/nail-site/", "/nail-site/首页.html");
+        // 重定向目标必须使用百分号编码（%E9%A6%96%E9%A1%B5.html = 首页.html），
+        // 否则中文会进入 Location 响应头，Tomcat 会丢弃该头导致浏览器无法跳转。
+        registry.addRedirectViewController("/nail-site", "/nail-site/%E9%A6%96%E9%A1%B5.html");
+        registry.addRedirectViewController("/nail-site/", "/nail-site/%E9%A6%96%E9%A1%B5.html");
     }
 
 }
