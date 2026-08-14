@@ -71,10 +71,10 @@
                             <div><b>正在研色与模拟材质</b><p>生成通常需要几十秒，离开页面不会中断任务。</p></div>
                         </div>
                         <div v-else-if="task.results.length" :class="['result-grid', { single: task.results.length === 1 }]">
-                            <article v-for="result in sortedResults" :key="result.id" class="result-card">
+                            <article v-for="(result, index) in sortedResults" :key="result.id" class="result-card">
                                 <el-image :src="result.url" :preview-src-list="task.results.map((item) => item.url)" fit="cover" preview-teleported />
                                 <footer>
-                                    <div><span>方案 {{ result.sort + 1 }}</span><small>{{ result.width }} × {{ result.height }} · {{ reviewLabel(result.reviewStatus) }}<template v-if="result.score"> · 美学 {{ result.score }}</template></small></div>
+                                    <div><span>方案 {{ index + 1 }}</span><small>{{ result.width }} × {{ result.height }} · {{ reviewLabel(result.reviewStatus) }}<template v-if="result.score"> · 美学 {{ result.score }}</template></small></div>
                                     <div class="result-actions">
                                         <el-button v-if="result.reviewStatus !== 'ADOPTED'" link @click="openReject(result)">驳回</el-button>
                                         <el-button :type="baseResult?.id === result.id ? 'success' : 'default'" plain link @click="setBase(result)">{{ baseResult?.id === result.id ? '已选为底' : '以此为底' }}</el-button>
@@ -100,7 +100,7 @@
                             <span>{{ submitting ? '创建中' : '再次生成' }}</span><icon name="el-icon-Top" />
                         </button>
                     </section>
-                    <div v-if="baseResult" class="base-hint">以「方案 {{ baseResult.sort + 1 }}」为底图继续创作 <button type="button" @click="baseResult = undefined">取消</button></div>
+                    <div v-if="baseResult" class="base-hint">以「方案 {{ sortedResults.findIndex((item) => item.id === baseResult.id) + 1 }}」为底图继续创作 <button type="button" @click="baseResult = undefined">取消</button></div>
                 </template>
 
                 <div v-else-if="!detailLoading" class="missing-state"><icon name="el-icon-DocumentDelete" /><h2>设计记录不存在</h2><el-button type="primary" @click="router.push('/nail/ai')">返回创作台</el-button></div>
@@ -310,7 +310,7 @@ onBeforeUnmount(() => { if (pollTimer) window.clearInterval(pollTimer) })
 .result-area { padding: 26px 34px 34px; }.result-area > header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 14px; }.result-area > header span { color: #9d6874; font-size: 9px; letter-spacing: .15em; }.result-area h2 { margin: 4px 0 0; font-size: 17px; font-weight: 620; }.result-area > header small { color: #9ca1a9; font-size: 10px; }
 .result-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; }.result-grid.single { grid-template-columns: minmax(0, 860px); justify-content: center; }
 .result-card { overflow: hidden; border: 1px solid #dfe2e7; border-radius: 14px; background: #fff; }.result-card :deep(.el-image) { display: block; width: 100%; aspect-ratio: 1; background: #eceef1; }.result-card :deep(.el-image__inner) { width: 100%; height: 100%; }
-.result-card footer { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 14px; }.result-card footer > div:first-child { display: grid; gap: 3px; }.result-card footer span { font-size: 12px; font-weight: 600; }.result-card footer small { color: #969ba4; font-size: 9px; }.result-actions { display: flex; align-items: center; gap: 4px; }
+.result-card footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 10px; padding: 12px 14px; }.result-card footer > div:first-child { display: grid; flex: 1 1 0; min-width: 0; gap: 3px; }.result-card footer span { font-size: 12px; font-weight: 600; }.result-card footer small { color: #969ba4; font-size: 9px; }.result-actions { display: flex; flex: 0 1 auto; min-width: 0; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 4px; margin-left: auto; }
 .review-note { margin: 0; padding: 0 14px 12px; color: #8a6970; font-size: 10px; }
 .generating-state { display: flex; align-items: center; justify-content: center; gap: 30px; min-height: 420px; border: 1px solid #e0e3e8; border-radius: 14px; background: #fff; }.generating-state b { font-size: 15px; }.generating-state p { margin: 6px 0 0; color: #8e939c; font-size: 11px; }
 .loading-nails { display: flex; align-items: flex-end; gap: 5px; height: 58px; }.loading-nails i { width: 15px; height: 42px; border: 1px solid #c995a0; border-radius: 9px 9px 6px 6px; background: #f2e4e7; animation: craft 1.25s ease-in-out infinite alternate; }.loading-nails i:nth-child(2),.loading-nails i:nth-child(4){height:52px;animation-delay:.15s}.loading-nails i:nth-child(3){height:57px;animation-delay:.3s}
